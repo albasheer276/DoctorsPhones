@@ -1,11 +1,11 @@
 <resources>
-    <color name="md_theme_light_primary">#7D5800</color>
+    <color name="md_theme_light_primary">#BD8500</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFDEA3</color>
     <color name="md_theme_light_onPrimaryContainer">#281900</color>
     <color name="md_theme_light_secondary">#AA3149</color>
     <color name="md_theme_light_onSecondary">#FFFFFF</color>
-    <color name="md_theme_light_secondaryContainer">#FFDADE</color>
+    <color name="md_theme_light_secondaryContainer">#8A1733</color>
     <color name="md_theme_light_onSecondaryContainer">#40000F</color>
     <color name="md_theme_light_tertiary">#96480E</color>
     <color name="md_theme_light_onTertiary">#FFFFFF</color>
@@ -57,4 +57,10 @@
     <color name="md_theme_dark_primaryInverse">#7D5800</color>
     <color name="seed">#D9AE5F</color>
     <color name="error">#BA1B1B</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="hintColor">#8A9296</color>
+    <color name="secondaryButtonColor">#E5E5E5</color>
+    <color name="secondaryButtonColorHighlight">#BFBFBF</color>
+    <color name="secondaryButtonTextColor">#8A9296</color>
 </resources>

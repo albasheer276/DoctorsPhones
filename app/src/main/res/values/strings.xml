@@ -3,4 +3,9 @@
     <string name="app_title">أرقام الاطباء</string>
     <string name="enter_your_name">أدخل اسمك</string>
     <string name="login">دخول</string>
+    <string name="female_doctor">female doctor</string>
+    <string name="main_icon">main icon</string>
+    <string name="male_doctor">male doctor</string>
+    <string name="map_marker_button">map marker button</string>
+    <string name="phones">أرقام الحجز</string>
 </resources>

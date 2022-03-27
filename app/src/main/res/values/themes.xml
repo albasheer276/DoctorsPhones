@@ -32,6 +32,64 @@
     </style>
 
     <style name="AppTitle">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/md_theme_light_primary</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="NormalInput" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/md_theme_light_primary</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:background">@drawable/rounded_bordered_bg</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColorHint">@color/hintColor</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Button.Rounded</item>
+        <item name="backgroundTint">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorControlHighlight">@color/md_theme_light_secondary</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="SmallSecondaryButton" parent="">
+        <item name="android:background">@drawable/secondary_rounded_bordered_bg</item>
+        <item name="colorControlHighlight">@color/secondaryButtonColorHighlight</item>
+        <item name="android:textColor">@color/secondaryButtonTextColor</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="fontFamily">@font/arabic_typesettings_font</item>
+    </style>
+
+    <style name="CardHeader">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/md_theme_light_onPrimaryContainer</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/arabic_typesettings_font</item>
+        <item name="android:background">@color/md_theme_light_primaryContainer</item>
+    </style>
+
+    <style name="CardContent">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+<!--        <item name="android:gravity">end</item>-->
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/md_theme_light_onPrimaryContainer</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
     </style>
 </resources>
