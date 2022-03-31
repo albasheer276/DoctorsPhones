@@ -62,7 +62,7 @@ class SpinnerDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         filter(null)
-        mBinding.imgClose.setOnClickListener {
+        mBinding.spinnerDialogImgClose.setOnClickListener {
             dismiss()
         }
         mBinding.spinnerDialogEdtSearch.addTextChangedListener(this)

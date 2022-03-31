@@ -23,4 +23,8 @@
     <string name="note">note</string>
     <string name="note_txt">سيتم التأكد من البيانات قبل إضافتها الى النظام، قد تتأخر هذه العملية حوالي 24 ساعة.</string>
     <string name="save">حفظ</string>
+    <string name="first_number">الرقم الأول</string>
+    <string name="call">call</string>
+    <string name="copy">copy</string>
+    <string name="phone_not_working">رقم الهاتف لايعمل؟</string>
 </resources>

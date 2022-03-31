@@ -46,27 +46,28 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/docPhone_btnDoctorOnMap"
-                    style="@android:style/Widget.Material.Light.Button.Borderless.Small"
-                    android:layout_width="24dp"
-                    android:layout_height="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/map_marker_button"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_maker_icon"
-                    android:contentDescription="@string/map_marker_button" />
+                    app:srcCompat="@drawable/ic_maker_icon" />
 
                 <TextView
                     android:id="@+id/docPhone_btnDoctorDetails"
                     style="@style/SmallSecondaryButton"
                     android:layout_width="wrap_content"
                     android:layout_height="23dp"
-                    android:text="@string/phones"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/phones"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
