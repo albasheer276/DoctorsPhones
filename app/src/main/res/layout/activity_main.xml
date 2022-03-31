@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include layout="@layout/doctor_phone_item_layout" />
+    <include android:id="@+id/spinnerLayout" layout="@layout/spinners_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

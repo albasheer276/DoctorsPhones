@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/spinner2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_arrow_bg"
+            android:contentDescription="@string/spinner_dropdown"
+            android:paddingHorizontal="2dp"
+            android:translationZ="1dp"
+            app:srcCompat="@drawable/ic_arrow_drop_down" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-2dp"
+            android:background="@drawable/spinner_bordered_bg"
+            android:padding="5dp"
+            android:textColor="@color/md_theme_light_onPrimaryContainer"
+            tools:text="الاختصاص" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/spinner2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/spinner"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_arrow_bg"
+            android:contentDescription="@string/spinner_dropdown"
+            android:paddingHorizontal="2dp"
+            android:translationZ="1dp"
+            app:srcCompat="@drawable/ic_arrow_drop_down" />
+
+        <TextView
+            android:id="@+id/spinner_txtProvince"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-2dp"
+            android:background="@drawable/spinner_bordered_bg"
+            android:padding="5dp"
+            android:textColor="@color/md_theme_light_onPrimaryContainer"
+            android:text="@string/province" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

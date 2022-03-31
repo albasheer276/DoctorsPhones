@@ -8,4 +8,6 @@
     <string name="male_doctor">male doctor</string>
     <string name="map_marker_button">map marker button</string>
     <string name="phones">أرقام الحجز</string>
+    <string name="spinner_dropdown">spinner dropdown</string>
+    <string name="province">المحافظة</string>
 </resources>
