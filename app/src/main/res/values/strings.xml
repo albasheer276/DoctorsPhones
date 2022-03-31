@@ -10,4 +10,17 @@
     <string name="phones">أرقام الحجز</string>
     <string name="spinner_dropdown">spinner dropdown</string>
     <string name="province">المحافظة</string>
+    <string name="ask_doctor_phone">طلب رقم طبيب</string>
+    <string name="doctor_phones">أرقام الأطباء</string>
+    <string name="add_doctor">إضافة طبيب</string>
+    <string name="doctor_name">اسم الطبيب</string>
+    <string name="doctor_phone">رقم الهاتف</string>
+    <string name="another_phone">رقم هاتف آخر (اختياري)</string>
+    <string name="district_name_street">اسم المنطقة او الشارع</string>
+    <string name="city_name">اسم المدينة</string>
+    <string name="building_address">اسم العيادة، اسم المجمع، أو اقرب نقطة دالة</string>
+    <string name="specialization">الاختصاص</string>
+    <string name="note">note</string>
+    <string name="note_txt">سيتم التأكد من البيانات قبل إضافتها الى النظام، قد تتأخر هذه العملية حوالي 24 ساعة.</string>
+    <string name="save">حفظ</string>
 </resources>

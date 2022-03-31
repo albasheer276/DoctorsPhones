@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/addDoctor_edtDoctorName"
+        style="@style/NormalInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:hint="@string/doctor_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/addDoctor_edtDoctorPhone1"
+        style="@style/NormalInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:drawableStart="@drawable/ic_contact_icon"
+        android:gravity="right"
+        android:hint="@string/doctor_phone"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/addDoctor_edtDoctorPhone2"
+        style="@style/NormalInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:drawableStart="@drawable/ic_contact_icon"
+        android:gravity="right"
+        android:hint="@string/another_phone"
+        android:inputType="phone" />
+
+    <include
+        android:id="@+id/addDoctor_spinnerLayout"
+        layout="@layout/spinners_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/addDoctor_edtDoctorStreet"
+            style="@style/NormalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:autofillHints="name"
+            android:hint="@string/district_name_street"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/addDoctor_edtDoctorCity"
+            style="@style/NormalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:autofillHints="name"
+            android:hint="@string/city_name"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/addDoctor_edtDoctorBuilding"
+        style="@style/NormalInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:hint="@string/building_address"
+        android:inputType="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/note_txt"
+            android:textColor="@color/md_theme_light_outline"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/note"
+            android:src="@drawable/ic_forum_icon"
+            app:tint="@color/md_theme_light_onPrimaryContainer" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addDoctor_btnSave"
+        style="@style/PrimaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/save" />
+
+</LinearLayout>

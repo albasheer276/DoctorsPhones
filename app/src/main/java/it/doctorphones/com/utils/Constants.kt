@@ -20,3 +20,8 @@ val provinces = arrayListOf(
     "نينوى",
     "واسط",
 )
+
+val specializations = arrayListOf(
+    "دكتور باطنية واطفال",
+    "دكتور أسنان",
+)

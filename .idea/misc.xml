@@ -3,14 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/libs/searchablespinner/src/main/res/layout/list_item_seachable_spinner.xml" value="0.18541666666666667" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/libs/searchablespinner/src/main/res/layout/searchable_spinner.xml" value="0.18541666666666667" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.3405" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/drawable/spinner_arrow_bg.xml" value="0.3405" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/drawable/spinner_bordered_bg.xml" value="0.3405" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/layout/activity_main.xml" value="0.2473940236275191" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/layout/spinners_layout.xml" value="0.17119565217391305" />
-        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/searchablespinner/src/main/res/layout/searchable_spinner.xml" value="0.18541666666666667" />
+        <entry key="..\:/Alkafeel/Projects/DoctorsPhones/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable-v24/ic_close.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable-v24/ic_female_doc.xml" value="0.203" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable-v24/ic_search.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable-v24/secondary_rounded_bordered_bg.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/divider_10dp.xml" value="0.1995" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/ic_add_doctor_icon.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/ic_forum_icon.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/ic_home_icon.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/primary_btn_bg.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/drawable/rounded_bordered_bg.xml" value="0.3005" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/font/arabic_typesettings_font.xml" value="0.40208333333333335" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/font/cairo_font.xml" value="0.40208333333333335" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/activity_main.xml" value="0.18085106382978725" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/add_doctor_phone.xml" value="0.2513586956521739" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/add_doctor_phone_layout.xml" value="0.5" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/doctor_phone_item_layout.xml" value="0.6352313167259787" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/login_layout.xml" value="0.25" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/octor_phone_item_layout.xml" value="0.2513586956521739" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/spinner_dialog_layout.xml" value="0.19976076555023922" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/spinner_item_layout.xml" value="0.25" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/layout/spinners_layout.xml" value="0.2513586956521739" />
+        <entry key="..\:/Personal/Projects/DoctorsPhones/app/src/main/res/menu/bottom_menu.xml" value="0.371875" />
       </map>
     </option>
   </component>
