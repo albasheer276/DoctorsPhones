@@ -21,7 +21,8 @@ import it.doctorphones.com.databinding.SpinnerDialogLayoutBinding
 class SpinnerDialogFragment(
     private val list: ArrayList<String>,
     private val title: String,
-    private val onItemSelectListener: (position: Int, selectedString: String) -> Unit
+    private val onItemSelectListener: (position: Int, selectedString: String) -> Unit,
+    private val hideSearch: Boolean
 ) : DialogFragment(), TextWatcher {
     private lateinit var mBinding: SpinnerDialogLayoutBinding
     private lateinit var mSpinnerAdapter: CustomSpinnerAdapter
@@ -30,9 +31,10 @@ class SpinnerDialogFragment(
         const val TAG = "SpinnerDialogFragment_DP"
         fun newInstance(
             list: ArrayList<String>, title: String,
-            onItemSelectListener: (position: Int, selectedString: String) -> Unit
+            onItemSelectListener: (position: Int, selectedString: String) -> Unit,
+            hideSearch: Boolean = false
         ): SpinnerDialogFragment {
-            return SpinnerDialogFragment(list, title, onItemSelectListener)
+            return SpinnerDialogFragment(list, title, onItemSelectListener, hideSearch)
         }
     }
 
@@ -62,6 +64,9 @@ class SpinnerDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         filter(null)
+        if (hideSearch) {
+            mBinding.spinnerDialogEdtSearch.visibility = View.GONE
+        }
         mBinding.spinnerDialogImgClose.setOnClickListener {
             dismiss()
         }
@@ -70,7 +75,7 @@ class SpinnerDialogFragment(
 
     private fun initRecyclerView() {
         mBinding.spinnerDialogRvItems.apply {
-            mSpinnerAdapter = CustomSpinnerAdapter(context, list){ position, selectedString ->
+            mSpinnerAdapter = CustomSpinnerAdapter(context, list) { position, selectedString ->
                 onItemSelectListener(position, selectedString)
                 dismiss()
             }
@@ -95,22 +100,12 @@ class SpinnerDialogFragment(
     }
 
     private fun filter(query: String?) {
-        /*mViewModel.dashboardPatients.observe(viewLifecycleOwner) { list ->
-            mBinding.layoutLoadingPatient.shimmerLayout.visibility = View.GONE
-            if (!list.data.isNullOrEmpty() && list.data.size > 0) {
-                if (query.isNullOrEmpty()) {
-                    mBinding.rvPatients.visibility = View.VISIBLE
-                    mBinding.txtPatientEmptyResult.visibility = View.GONE
-                    mPatientsRVAdapter.setPatientList(list.data)
-                } else {
-                    mPatientsRVAdapter.setPatientList(list.data.filter {
-                        it.PatientFullName?.contains(query, true) ?: false
-                    } as ArrayList<PatientModel>)
-                }
-            } else {
-                mBinding.rvPatients.visibility = View.GONE
-                mBinding.txtPatientEmptyResult.visibility = View.VISIBLE
-            }
-        }*/
+        if (query.isNullOrEmpty()) {
+            mSpinnerAdapter.setList(list)
+        } else {
+            mSpinnerAdapter.setList(list.filter {
+                it.contains(query, true) ?: false
+            } as ArrayList<String>)
+        }
     }
 }

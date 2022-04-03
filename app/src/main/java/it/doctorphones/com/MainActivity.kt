@@ -1,12 +1,10 @@
 package it.doctorphones.com
 
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import it.doctorphones.com.dialogs.DoctorDetailsBottomDialog
 import it.doctorphones.com.databinding.ActivityMainBinding
-import it.doctorphones.com.utils.SearchableSpinnerUtil
-import it.doctorphones.com.utils.provinces
-import it.doctorphones.com.utils.specializations
 
 class MainActivity : AppCompatActivity() {
     private val _tag = "MainActivity_DP"
@@ -17,7 +15,16 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val spinnerBinding = mBinding.addPhone.spinnerLayout
+        mBinding.showDoctorDetails.setOnClickListener {
+            mBinding.showDoctorDetails.isEnabled = false
+            DoctorDetailsBottomDialog().show(supportFragmentManager, DoctorDetailsBottomDialog.TAG)
+            Handler(mainLooper).postDelayed({
+                mBinding.showDoctorDetails.isEnabled = true
+            }, 500)
+
+        }
+
+        /*val spinnerBinding = mBinding.addPhone.spinnerLayout
         spinnerBinding.spinnerProvinces.setOnClickListener {
             SearchableSpinnerUtil.setupSearchableSpinner(
                 supportFragmentManager,
@@ -36,6 +43,6 @@ class MainActivity : AppCompatActivity() {
             ) { position, selectedString ->
                 spinnerBinding.spinnerSpecializationsTxtValue.text = selectedString
             }
-        }
+        }*/
     }
 }

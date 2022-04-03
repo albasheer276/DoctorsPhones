@@ -21,10 +21,19 @@
     <string name="building_address">اسم العيادة، اسم المجمع، أو اقرب نقطة دالة</string>
     <string name="specialization">الاختصاص</string>
     <string name="note">note</string>
-    <string name="note_txt">سيتم التأكد من البيانات قبل إضافتها الى النظام، قد تتأخر هذه العملية حوالي 24 ساعة.</string>
+    <string name="note_txt_2">سيتم التأكد من البيانات قبل إضافتها الى النظام، قد تتأخر هذه العملية حوالي 24 ساعة.</string>
     <string name="save">حفظ</string>
     <string name="first_number">الرقم الأول</string>
     <string name="call">call</string>
     <string name="copy">copy</string>
     <string name="phone_not_working">رقم الهاتف لايعمل؟</string>
+    <string name="_07xx_xxx_xxxx">07xx xxx xxxx</string>
+    <string name="click_to_show_number">اضغط هنا لعرض الرقم</string>
+    <string name="second_number">الرقم الثاني</string>
+    <string name="third_number">الرقم الثالث</string>
+    <string name="add_to_my_doctors">اضافة الى أطبائي</string>
+    <string name="phone_closed">الرقم مغلق</string>
+    <string name="note_optional">ملاحظة (اختياري)</string>
+    <string name="send">ارسال</string>
+    <string name="txt_note_2">سيتم التأكد من اليبانات قبل حذف الرقم من النظام، قد تتأخر ههذ العملية حوالي 24 ساعة</string>
 </resources>

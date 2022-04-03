@@ -11,7 +11,7 @@ import it.doctorphones.com.databinding.SpinnerItemLayoutBinding
 
 class CustomSpinnerAdapter(
     private val context: Context,
-    private val list: ArrayList<String>,
+    private var list: ArrayList<String>,
     private val onItemSelectListener: (position: Int, selectedString: String) -> Unit
 ) :
     RecyclerView.Adapter<CustomSpinnerAdapter.MyViewHolder>() {
@@ -43,4 +43,10 @@ class CustomSpinnerAdapter(
     }
 
     override fun getItemCount(): Int = list.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setList(list: ArrayList<String>) {
+        this.list = list
+        notifyDataSetChanged()
+    }
 }

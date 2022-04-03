@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_background">
+
+    <TextView
+        android:id="@+id/reportDoctorPhoneDialog_txtTitle"
+        style="@style/DialogHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/phone_not_working" />
+
+    <ImageButton
+        android:id="@+id/reportDoctorPhoneDialog_imgClose"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/app_name"
+        android:minHeight="48dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reportDoctorPhoneDialog_txtTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close"
+        app:tint="@color/md_theme_light_onSecondary" />
+
+    <LinearLayout
+        android:id="@+id/reportDoctorPhoneDialog_spinnerReason"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_txtTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_arrow_bg"
+            android:contentDescription="@string/spinner_dropdown"
+            android:paddingHorizontal="2dp"
+            android:translationZ="1dp"
+            app:srcCompat="@drawable/ic_arrow_drop_down" />
+
+        <TextView
+            android:id="@+id/reportDoctorPhoneDialog_spinnerTxtValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-2dp"
+            android:background="@drawable/spinner_bordered_bg"
+            android:padding="5dp"
+            android:textColor="@color/md_theme_light_onPrimaryContainer"
+            android:text="@string/phone_closed" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/reportDoctorPhoneDialog_edtNote"
+        style="@style/NormalInput"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:lines="3"
+        android:gravity="start"
+        android:hint="@string/note_optional"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_spinnerReason"
+        tools:ignore="TextFields" />
+
+    <LinearLayout
+        android:id="@+id/reportDoctorPhoneDialog_layoutNote"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/send"
+        app:layout_constraintEnd_toEndOf="@+id/reportDoctorPhoneDialog_edtNote"
+        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_edtNote"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/txt_note_2"
+            android:textColor="@color/md_theme_light_outline"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/note"
+            android:src="@drawable/ic_forum_icon"
+            app:tint="@color/md_theme_light_onPrimaryContainer" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/reportDoctorPhoneDialog_btnSend"
+        style="@style/PrimaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/send"
+        app:layout_constraintEnd_toEndOf="@+id/reportDoctorPhoneDialog_layoutNote"
+        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_layoutNote" />
+</androidx.constraintlayout.widget.ConstraintLayout>

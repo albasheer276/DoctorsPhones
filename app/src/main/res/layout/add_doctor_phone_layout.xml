@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="@string/note_txt"
+            android:text="@string/note_txt_2"
             android:textColor="@color/md_theme_light_outline"
             android:textSize="11sp" />
 

@@ -25,3 +25,9 @@ val specializations = arrayListOf(
     "دكتور باطنية واطفال",
     "دكتور أسنان",
 )
+
+val reportReasons = arrayListOf(
+    "الرقم مغلق",
+    "الرقم خارج نطاق الخدمة",
+    "الرقم خطأ",
+)
