@@ -36,4 +36,7 @@
     <string name="note_optional">ملاحظة (اختياري)</string>
     <string name="send">ارسال</string>
     <string name="txt_note_2">سيتم التأكد من اليبانات قبل حذف الرقم من النظام، قد تتأخر ههذ العملية حوالي 24 ساعة</string>
+    <string name="comments">comments</string>
+    <string name="request">طلب</string>
+    <string name="request_doctor_phone">اطلب رقم طبيب</string>
 </resources>

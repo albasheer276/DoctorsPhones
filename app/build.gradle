@@ -50,4 +50,7 @@ dependencies {
     // dagger hilt
     implementation "com.google.dagger:hilt-android:2.41"
     kapt "com.google.dagger:hilt-compiler:2.41"
+
+    // avatar profile image
+    implementation "io.getstream:avatarview-coil:1.0.4"
 }

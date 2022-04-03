@@ -34,6 +34,8 @@
             android:layout_marginStart="-2dp"
             android:background="@drawable/spinner_bordered_bg"
             android:padding="5dp"
+            android:lines="1"
+            android:ellipsize="end"
             android:textColor="@color/md_theme_light_onPrimaryContainer"
             android:text="@string/specialization" />
 
@@ -68,6 +70,8 @@
             android:layout_marginStart="-2dp"
             android:background="@drawable/spinner_bordered_bg"
             android:padding="5dp"
+            android:lines="1"
+            android:ellipsize="end"
             android:textColor="@color/md_theme_light_onPrimaryContainer"
             android:text="@string/province" />
 

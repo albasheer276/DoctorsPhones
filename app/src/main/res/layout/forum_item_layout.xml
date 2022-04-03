@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/asas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="8dp"
+            android:background="@color/md_theme_light_surfaceVariant">
+
+            <io.getstream.avatarview.AvatarView
+                android:id="@+id/forumItem_avatarView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:avatarViewBorderColor="@color/md_theme_light_primary"
+                app:avatarViewBorderWidth="0dp"
+                app:avatarViewInitials="TB"
+                app:avatarViewInitialsBackgroundColor="@color/md_theme_light_inversePrimary"
+                app:avatarViewInitialsTextColor="@color/md_theme_light_onBackground"
+                app:avatarViewInitialsTextSize="20sp"
+                app:avatarViewShape="circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/forumItem_txtName"
+                style="@style/CardH3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/forumItem_avatarView"
+                app:layout_constraintEnd_toStartOf="@+id/forumItem_avatarView"
+                app:layout_constraintStart_toEndOf="@+id/forumItem_txtTimeAgo"
+                app:layout_constraintTop_toTopOf="@+id/forumItem_avatarView"
+                tools:text="Tomato Bus" />
+
+            <TextView
+                android:id="@+id/forumItem_txtTimeAgo"
+                style="@style/CardSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="منذ 10 دقائق" />
+
+            <TextView
+                android:id="@+id/forumItem_txtTitle"
+                style="@style/CardH2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forumItem_avatarView"
+                tools:text="اريد رقم د. علي حسين جاسم" />
+
+            <TextView
+                android:id="@+id/forumItem_txtSpecialization"
+                style="@style/CardH3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/forumItem_txtTitle"
+                tools:text="اختصاص قلبية" />
+
+            <ImageView
+                android:id="@+id/forumItem_imgComments"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_comments_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/forumItem_txtSpecialization"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/forumItem_txtSpecialization"
+                android:contentDescription="@string/comments" />
+
+            <TextView
+                android:id="@+id/forumItem_txtCommentsCount"
+                style="@style/CardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/forumItem_imgComments"
+                app:layout_constraintStart_toEndOf="@+id/forumItem_imgComments"
+                app:layout_constraintTop_toTopOf="@+id/forumItem_imgComments"
+                tools:text="24" />
+
+            <ImageView
+                android:id="@+id/forumItem_imgBells"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/comments"
+                android:src="@drawable/ic_bell_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/forumItem_txtCommentsCount"
+                app:layout_constraintStart_toEndOf="@+id/forumItem_txtCommentsCount"
+                app:layout_constraintTop_toTopOf="@+id/forumItem_txtCommentsCount" />
+
+            <TextView
+                android:id="@+id/forumItem_txtBellsCount"
+                style="@style/CardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/forumItem_imgBells"
+                app:layout_constraintStart_toEndOf="@+id/forumItem_imgBells"
+                app:layout_constraintTop_toTopOf="@+id/forumItem_imgBells"
+                tools:text="12" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

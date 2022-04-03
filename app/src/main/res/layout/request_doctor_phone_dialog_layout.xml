@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/md_theme_light_background"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:id="@+id/requestDoctorPhoneDialog_lblTitle"
+        style="@style/DialogHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/request_doctor_phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/requestDoctorPhoneDialog_imgClose"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/app_name"
+        android:minHeight="48dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/requestDoctorPhoneDialog_lblTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close"
+        app:tint="@color/md_theme_light_onSecondary" />
+
+    <include
+        android:id="@+id/requestDoctorPhoneDialog_spinnerLayout"
+        layout="@layout/spinners_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_lblTitle" />
+
+    <EditText
+        android:id="@+id/requestDoctorPhoneDialog_edtDoctorName"
+        style="@style/NormalInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints="name"
+        android:gravity="start"
+        android:hint="@string/doctor_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_spinnerLayout"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/requestDoctorPhoneDialog_btnRequest"
+        style="@style/PrimaryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/request"
+        app:layout_constraintEnd_toEndOf="@+id/requestDoctorPhoneDialog_edtDoctorName"
+        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_edtDoctorName" />
+</androidx.constraintlayout.widget.ConstraintLayout>

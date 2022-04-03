@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background">
+    android:layout_height="wrap_content"
+    android:background="@color/md_theme_light_background"
+    android:paddingBottom="8dp">
 
     <TextView
-        android:id="@+id/reportDoctorPhoneDialog_txtTitle"
+        android:id="@+id/reportDoctorPhoneDialog_lblTitle"
         style="@style/DialogHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/phone_not_working"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/phone_not_working" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/reportDoctorPhoneDialog_imgClose"
@@ -26,7 +27,7 @@
         android:contentDescription="@string/app_name"
         android:minHeight="48dp"
         android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/reportDoctorPhoneDialog_txtTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/reportDoctorPhoneDialog_lblTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close"
@@ -37,12 +38,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_txtTitle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_lblTitle"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -61,8 +62,8 @@
             android:layout_marginStart="-2dp"
             android:background="@drawable/spinner_bordered_bg"
             android:padding="5dp"
-            android:textColor="@color/md_theme_light_onPrimaryContainer"
-            android:text="@string/phone_closed" />
+            android:text="@string/phone_closed"
+            android:textColor="@color/md_theme_light_onPrimaryContainer" />
 
     </LinearLayout>
 
@@ -75,10 +76,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:autofillHints="name"
-        android:lines="3"
         android:gravity="start"
         android:hint="@string/note_optional"
         android:inputType="textMultiLine"
+        android:lines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_spinnerReason"
@@ -89,11 +90,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:text="@string/send"
         app:layout_constraintEnd_toEndOf="@+id/reportDoctorPhoneDialog_edtNote"
         app:layout_constraintTop_toBottomOf="@+id/reportDoctorPhoneDialog_edtNote"
-        android:gravity="center"
-        android:orientation="horizontal"
         tools:ignore="UseCompoundDrawables">
 
         <TextView

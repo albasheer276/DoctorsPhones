@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import it.doctorphones.com.R
 import it.doctorphones.com.databinding.ReportDoctorPhoneDialogLayoutBinding
-import it.doctorphones.com.databinding.SpinnerDialogLayoutBinding
 import it.doctorphones.com.utils.SearchableSpinnerUtil
 import it.doctorphones.com.utils.reportReasons
 
-class ReportDialog(
+class ReportDoctorPhoneDialog(
     private val mContext: Context,
     private val mFragmentManager: FragmentManager,
     private val onSaveClickListener: (reason: String, note: String) -> Unit
@@ -27,9 +27,17 @@ class ReportDialog(
             mContext: Context,
             mFragmentManager: FragmentManager,
             onSaveClickListener: (reason: String, note: String) -> Unit
-        ): ReportDialog {
-            return ReportDialog(mContext, mFragmentManager, onSaveClickListener)
+        ): ReportDoctorPhoneDialog {
+            return ReportDoctorPhoneDialog(mContext, mFragmentManager, onSaveClickListener)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -54,6 +62,10 @@ class ReportDialog(
                 mBinding.reportDoctorPhoneDialogSpinnerTxtValue.text.toString(),
                 mBinding.reportDoctorPhoneDialogEdtNote.text.toString()
             )
+            dismiss()
+        }
+
+        mBinding.reportDoctorPhoneDialogImgClose.setOnClickListener {
             dismiss()
         }
     }

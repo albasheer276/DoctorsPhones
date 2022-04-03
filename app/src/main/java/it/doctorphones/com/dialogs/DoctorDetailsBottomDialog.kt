@@ -1,15 +1,10 @@
 package it.doctorphones.com.dialogs
 
-import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import it.doctorphones.com.R
 import it.doctorphones.com.databinding.DoctorDetailsDialogLayoutBinding
 
 class DoctorDetailsBottomDialog : BottomSheetDialogFragment() {
@@ -70,22 +65,22 @@ class DoctorDetailsBottomDialog : BottomSheetDialogFragment() {
         }
 
         mBinding.doctorDetailsDialogLblReportPhone1.setOnClickListener {
-            val dialog = ReportDialog.newInstance(requireContext(), parentFragmentManager){reason,note ->
+            val dialog = ReportDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager){ reason, note ->
 
             }
-            dialog.show(parentFragmentManager, ReportDialog.TAG)
+            dialog.show(parentFragmentManager, ReportDoctorPhoneDialog.TAG)
         }
         mBinding.doctorDetailsDialogLblReportPhone2.setOnClickListener {
-            val dialog = ReportDialog.newInstance(requireContext(), parentFragmentManager){reason,note ->
+            val dialog = ReportDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager){ reason, note ->
 
             }
-            dialog.show(parentFragmentManager, ReportDialog.TAG)
+            dialog.show(parentFragmentManager, ReportDoctorPhoneDialog.TAG)
         }
         mBinding.doctorDetailsDialogLblReportPhone3.setOnClickListener {
-            val dialog = ReportDialog.newInstance(requireContext(), parentFragmentManager){reason,note ->
+            val dialog = ReportDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager){ reason, note ->
 
             }
-            dialog.show(parentFragmentManager, ReportDialog.TAG)
+            dialog.show(parentFragmentManager, ReportDoctorPhoneDialog.TAG)
         }
     }
 }
