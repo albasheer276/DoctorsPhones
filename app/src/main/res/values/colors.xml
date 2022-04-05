@@ -63,4 +63,16 @@
     <color name="secondaryButtonColor">#E5E5E5</color>
     <color name="secondaryButtonColorHighlight">#BFBFBF</color>
     <color name="secondaryButtonTextColor">#8A9296</color>
+
+    <color name="successColor">#4CAF50</color>
+    <color name="successLightColor">#81C784</color>
+    <color name="successDarkColor">#2E7D32</color>
+
+    <color name="dangerColor">#F44336</color>
+    <color name="dangerLightColor">#E57373</color>
+    <color name="dangerDarkColor">#C62828</color>
+
+    <color name="warningColor">#FFC107</color>
+    <color name="warningLightColor">#FFD54F</color>
+    <color name="warningDarkColor">#FFA000</color>
 </resources>

@@ -61,6 +61,15 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="SuccessButton" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Button.Rounded</item>
+        <item name="backgroundTint">@color/successColor</item>
+        <item name="colorControlHighlight">@color/successLightColor</item>
+        <item name="android:textColor">@color/md_theme_light_onBackground</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
     <style name="SecondaryButton" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.Button.Rounded</item>
         <item name="backgroundTint">@color/md_theme_light_inverseOnSurface</item>
@@ -108,6 +117,13 @@
         <item name="android:textColor">@color/md_theme_light_onPrimaryContainer</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="CardH1">
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/md_theme_light_onPrimaryContainer</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="CardH2">

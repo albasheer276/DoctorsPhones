@@ -31,3 +31,6 @@ val reportReasons = arrayListOf(
     "الرقم خارج نطاق الخدمة",
     "الرقم خطأ",
 )
+
+const val PASSWORD = "password"
+const val USERS_TABLE = "users"

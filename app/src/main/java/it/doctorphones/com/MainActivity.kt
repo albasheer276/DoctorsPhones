@@ -1,15 +1,12 @@
 package it.doctorphones.com
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import it.doctorphones.com.dialogs.DoctorDetailsBottomDialog
+import com.google.firebase.FirebaseApp
+import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.databinding.ActivityMainBinding
-import it.doctorphones.com.dialogs.ReportDoctorPhoneDialog
-import it.doctorphones.com.dialogs.RequestDoctorPhoneDialog
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val _tag = "MainActivity_DP"
     private lateinit var mBinding: ActivityMainBinding
@@ -19,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        val dialog = RequestDoctorPhoneDialog.newInstance(this, supportFragmentManager){ province, specialize, doctorName ->
+        /*val dialog = RequestDoctorPhoneDialog.newInstance(this, supportFragmentManager){ province, specialize, doctorName ->
 
         }
-        dialog.show(supportFragmentManager, RequestDoctorPhoneDialog.TAG)
+        dialog.show(supportFragmentManager, RequestDoctorPhoneDialog.TAG)*/
 
         /*mBinding.showDoctorDetails.setOnClickListener {
             mBinding.showDoctorDetails.isEnabled = false
