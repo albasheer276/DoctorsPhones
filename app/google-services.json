@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "2347855273",
+    "firebase_url": "https://doctorsphone-22-default-rtdb.firebaseio.com",
+    "project_id": "doctorsphone-22",
+    "storage_bucket": "doctorsphone-22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2347855273:android:cc96fa5865fe896edf28b8",
+        "android_client_info": {
+          "package_name": "it.doctorphones.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2347855273-et2ji08p067f1t0mtr6lp17aargut7dt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.doctorphones.com",
+            "certificate_hash": "1cc08e16f846328c67433f782a623f32c60be7bf"
+          }
+        },
+        {
+          "client_id": "2347855273-t5skkone9r0odg2qiu0b3dc3iebaqq5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC78MsLKjR45505HxifiPnPM3OkCLVCMno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2347855273-t5skkone9r0odg2qiu0b3dc3iebaqq5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
