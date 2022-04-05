@@ -1,4 +1,4 @@
-package it.doctorphones.com.utils
+package it.doctorphones.com.dialogs
 
 import android.content.Context
 import android.view.View
