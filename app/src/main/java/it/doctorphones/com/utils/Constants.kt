@@ -34,3 +34,5 @@ val reportReasons = arrayListOf(
 
 const val PASSWORD = "password"
 const val USERS_TABLE = "users"
+
+const val PICK_CONTACT_INTENT = 20332

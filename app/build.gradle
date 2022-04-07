@@ -44,8 +44,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -55,12 +55,12 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.41"
     kapt "com.google.dagger:hilt-compiler:2.41"
 
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt")
+
+
     // avatar profile image
     implementation "io.getstream:avatarview-coil:1.0.4"
-
-    // navigation fragment
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
 
     // Import the BoM for the Firebase platform
     implementation platform('com.google.firebase:firebase-bom:29.3.0')
@@ -74,4 +74,11 @@ dependencies {
     // Declare the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
+
+    // permissions
+    implementation 'com.github.AraujoJordan:ExcuseMe:0.9.5'
+
+
+    // phone number formatter
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.46'
 }

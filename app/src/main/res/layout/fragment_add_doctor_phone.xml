@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.AddDoctorPhoneFragment">
 
     <EditText
         android:id="@+id/addDoctor_edtDoctorName"
@@ -16,35 +17,77 @@
         android:layout_marginEnd="16dp"
         android:autofillHints="name"
         android:hint="@string/doctor_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:nextFocusDown="@+id/addDoctor_edtDoctorPhone1" />
 
-    <EditText
-        android:id="@+id/addDoctor_edtDoctorPhone1"
-        style="@style/NormalInput"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints="name"
-        android:drawableStart="@drawable/ic_contact_icon"
-        android:gravity="right"
-        android:hint="@string/doctor_phone"
-        android:inputType="phone" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/addDoctor_edtDoctorPhone2"
-        style="@style/NormalInput"
+        <EditText
+            android:id="@+id/addDoctor_edtDoctorPhone1"
+            style="@style/NormalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="phone"
+            android:maxLength="11"
+            android:gravity="right"
+            android:hint="@string/doctor_phone"
+            android:inputType="phone"
+            android:paddingStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/addDoctor_imgDoctorPhone1"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/contacts"
+            android:src="@drawable/ic_contact_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addDoctor_edtDoctorPhone1"
+            app:layout_constraintTop_toTopOf="@+id/addDoctor_edtDoctorPhone1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints="name"
-        android:drawableStart="@drawable/ic_contact_icon"
-        android:gravity="right"
-        android:hint="@string/another_phone"
-        android:inputType="phone" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/addDoctor_edtDoctorPhone2"
+            style="@style/NormalInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints="phone"
+            android:gravity="right"
+            android:hint="@string/another_phone"
+            android:inputType="phone"
+            android:paddingStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/addDoctor_imgDoctorPhone2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/contacts"
+            android:src="@drawable/ic_contact_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/addDoctor_edtDoctorPhone2"
+            app:layout_constraintTop_toTopOf="@+id/addDoctor_edtDoctorPhone2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/addDoctor_spinnerLayout"
@@ -82,7 +125,8 @@
             android:layout_weight="1"
             android:autofillHints="name"
             android:hint="@string/city_name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:nextFocusDown="@+id/addDoctor_edtDoctorStreet" />
     </LinearLayout>
 
     <EditText

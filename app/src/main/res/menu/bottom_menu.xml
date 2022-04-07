@@ -6,7 +6,7 @@
         android:title="@string/ask_doctor_phone"
         android:icon="@drawable/ic_forum_icon" />
 
-    <item android:id="@+id/menuHome"
+    <item android:id="@+id/menuViewDoctorPhones"
         android:title="@string/doctor_phones"
         android:icon="@drawable/ic_home_icon" />
 

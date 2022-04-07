@@ -44,4 +44,13 @@
     <string name="cancel">الغاء</string>
     <string name="ok">تم</string>
     <string name="confirm">تأكيد</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="search">البحث</string>
+    <string name="contacts">contacts</string>
 </resources>

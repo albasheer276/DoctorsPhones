@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/menuViewDoctorPhones">
+
+    <fragment
+        android:id="@+id/menuViewDoctorPhones"
+        android:name="it.doctorphones.com.ui.ViewDoctorPhonesFragment"
+        android:label="@string/doctor_phones"
+        tools:layout="@layout/fragment_view_doctor_phones" />
+    <fragment
+        android:id="@+id/menuAddDoctor"
+        android:name="it.doctorphones.com.ui.AddDoctorPhoneFragment"
+        android:label="@string/add_doctor"
+        tools:layout="@layout/fragment_add_doctor_phone" />
+    <fragment
+        android:id="@+id/menuForum"
+        android:name="it.doctorphones.com.ui.ForumDoctorFragment"
+        android:label="@string/ask_doctor_phone"
+        tools:layout="@layout/fragment_forum_doctor" />
+
+</navigation>

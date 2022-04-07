@@ -75,4 +75,7 @@
     <color name="warningColor">#FFC107</color>
     <color name="warningLightColor">#FFD54F</color>
     <color name="warningDarkColor">#FFA000</color>
+
+    <color name="menu_un_selected">#50E5E5E5</color>
+    <color name="menu_selected">#FFFFFF</color>
 </resources>

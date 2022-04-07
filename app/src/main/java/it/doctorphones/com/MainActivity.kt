@@ -1,10 +1,12 @@
 package it.doctorphones.com
 
+import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.FirebaseApp
+import androidx.appcompat.widget.ThemeUtils
 import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.databinding.ActivityMainBinding
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -15,6 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        val window = this.window
+        window.statusBarColor = this.resources.getColor(R.color.md_theme_light_secondary, theme)
 
         /*val dialog = RequestDoctorPhoneDialog.newInstance(this, supportFragmentManager){ province, specialize, doctorName ->
 
