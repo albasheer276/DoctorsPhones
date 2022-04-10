@@ -127,6 +127,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="FormAlertLabel">
+        <item name="android:textColor">@color/dangerDarkColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="CardNumber">
         <item name="android:textColor">@color/md_theme_light_secondary</item>
         <item name="android:textSize">18sp</item>

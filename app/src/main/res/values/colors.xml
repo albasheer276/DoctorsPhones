@@ -78,4 +78,6 @@
 
     <color name="menu_un_selected">#50E5E5E5</color>
     <color name="menu_selected">#FFFFFF</color>
+
+    <color name="disabledEditText">#EBEBEB</color>
 </resources>

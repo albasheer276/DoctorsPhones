@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.AddDoctorPhoneFragment">
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/addDoctor_edtDoctorName"
         style="@style/NormalInput"
         android:layout_width="match_parent"
@@ -19,6 +19,16 @@
         android:hint="@string/doctor_name"
         android:inputType="text"
         android:nextFocusDown="@+id/addDoctor_edtDoctorPhone1" />
+
+    <TextView
+        android:id="@+id/addDoctor_txtDoctorName"
+        style="@style/FormAlertLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,10 +44,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:autofillHints="phone"
-            android:maxLength="11"
             android:gravity="right"
             android:hint="@string/doctor_phone"
             android:inputType="phone"
+            android:maxLength="11"
             android:paddingStart="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +64,16 @@
             app:layout_constraintStart_toStartOf="@+id/addDoctor_edtDoctorPhone1"
             app:layout_constraintTop_toTopOf="@+id/addDoctor_edtDoctorPhone1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/addDoctor_txtDoctorPhone1"
+        style="@style/FormAlertLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -88,6 +108,15 @@
             app:layout_constraintStart_toStartOf="@+id/addDoctor_edtDoctorPhone2"
             app:layout_constraintTop_toTopOf="@+id/addDoctor_edtDoctorPhone2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/addDoctor_txtDoctorPhone2"
+        style="@style/FormAlertLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <include
         android:id="@+id/addDoctor_spinnerLayout"
@@ -99,34 +128,65 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
-        <EditText
-            android:id="@+id/addDoctor_edtDoctorStreet"
-            style="@style/NormalInput"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:autofillHints="name"
-            android:hint="@string/district_name_street"
-            android:inputType="text" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/addDoctor_edtDoctorCity"
-            style="@style/NormalInput"
+            <EditText
+                android:id="@+id/addDoctor_edtDoctorStreet"
+                style="@style/NormalInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:hint="@string/district_name_street"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/addDoctor_txtDoctorStreet"
+                style="@style/FormAlertLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
-            android:autofillHints="name"
-            android:hint="@string/city_name"
-            android:inputType="text"
-            android:nextFocusDown="@+id/addDoctor_edtDoctorStreet" />
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/addDoctor_edtDoctorCity"
+                style="@style/NormalInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="name"
+                android:hint="@string/city_name"
+                android:inputType="text"
+                android:nextFocusDown="@+id/addDoctor_edtDoctorStreet" />
+
+            <TextView
+                android:id="@+id/addDoctor_txtDoctorCity"
+                style="@style/FormAlertLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <EditText
@@ -140,6 +200,16 @@
         android:autofillHints="name"
         android:hint="@string/building_address"
         android:inputType="text" />
+
+    <TextView
+        android:id="@+id/addDoctor_txtDoctorBuilding"
+        style="@style/FormAlertLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -168,14 +238,35 @@
             app:tint="@color/md_theme_light_onPrimaryContainer" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/addDoctor_btnSave"
-        style="@style/PrimaryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/save" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addDoctor_btnSave"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="16dp"
+            android:text="@string/add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/addDoctor_btnClearForm"
+            style="@style/SecondaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="@string/clear_form"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

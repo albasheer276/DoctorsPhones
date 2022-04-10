@@ -33,28 +33,11 @@ class DoctorDetailsBottomDialog : BottomSheetDialogFragment() {
 
             mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone2.visibility = View.VISIBLE
             mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone2.visibility = View.GONE
-
-            mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone3.visibility = View.VISIBLE
-            mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone3.visibility = View.GONE
         }
 
         mBinding.doctorDetailsDialogTxtShowDoctorPhone2.setOnClickListener {
             mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone2.visibility = View.GONE
             mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone2.visibility = View.VISIBLE
-
-            mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone1.visibility = View.VISIBLE
-            mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone1.visibility = View.GONE
-
-            mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone3.visibility = View.VISIBLE
-            mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone3.visibility = View.GONE
-        }
-
-        mBinding.doctorDetailsDialogTxtShowDoctorPhone3.setOnClickListener {
-            mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone3.visibility = View.GONE
-            mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone3.visibility = View.VISIBLE
-
-            mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone2.visibility = View.VISIBLE
-            mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone2.visibility = View.GONE
 
             mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone1.visibility = View.VISIBLE
             mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone1.visibility = View.GONE
@@ -71,12 +54,6 @@ class DoctorDetailsBottomDialog : BottomSheetDialogFragment() {
             dialog.show(parentFragmentManager, ReportDoctorPhoneDialog.TAG)
         }
         mBinding.doctorDetailsDialogLblReportPhone2.setOnClickListener {
-            val dialog = ReportDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager){ reason, note ->
-
-            }
-            dialog.show(parentFragmentManager, ReportDoctorPhoneDialog.TAG)
-        }
-        mBinding.doctorDetailsDialogLblReportPhone3.setOnClickListener {
             val dialog = ReportDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager){ reason, note ->
 
             }

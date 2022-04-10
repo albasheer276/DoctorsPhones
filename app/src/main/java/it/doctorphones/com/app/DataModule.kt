@@ -1,8 +1,5 @@
 package it.doctorphones.com.app
 
-import android.content.Context
-import android.util.Log
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -11,9 +8,8 @@ import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
+import it.doctorphones.com.utils.DOCTORS_TABLE
 import javax.inject.Singleton
 
 @Module
@@ -26,5 +22,10 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideDatabaseReference(): DatabaseReference = Firebase.database.reference
+    fun provideDatabaseReference(): DatabaseReference {
+        Firebase.database.setPersistenceEnabled(true)
+        Firebase.database.setPersistenceCacheSizeBytes(50 * 1000 * 1000);
+        Firebase.database.getReference(DOCTORS_TABLE).keepSynced(true)
+        return Firebase.database.reference
+    }
 }

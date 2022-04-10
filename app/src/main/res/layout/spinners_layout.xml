@@ -33,11 +33,12 @@
             android:layout_height="match_parent"
             android:layout_marginStart="-2dp"
             android:background="@drawable/spinner_bordered_bg"
-            android:padding="5dp"
-            android:lines="1"
             android:ellipsize="end"
-            android:textColor="@color/md_theme_light_onPrimaryContainer"
-            android:text="@string/specialization" />
+            android:lines="1"
+            android:padding="5dp"
+            android:tag="-1"
+            android:text="@string/specialization"
+            android:textColor="@color/md_theme_light_onPrimaryContainer" />
 
     </LinearLayout>
 
@@ -69,11 +70,36 @@
             android:layout_height="match_parent"
             android:layout_marginStart="-2dp"
             android:background="@drawable/spinner_bordered_bg"
-            android:padding="5dp"
-            android:lines="1"
             android:ellipsize="end"
-            android:textColor="@color/md_theme_light_onPrimaryContainer"
-            android:text="@string/province" />
+            android:lines="1"
+            android:padding="5dp"
+            android:tag="-1"
+            android:text="@string/province"
+            android:textColor="@color/md_theme_light_onPrimaryContainer" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/spinnerSpecializations_alertValue"
+        style="@style/FormAlertLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSpecializations"
+        app:layout_constraintStart_toStartOf="@+id/spinnerSpecializations"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSpecializations"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/spinnerProvinces_alertValue"
+        style="@style/FormAlertLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerProvinces"
+        app:layout_constraintStart_toStartOf="@+id/spinnerProvinces"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerProvinces"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

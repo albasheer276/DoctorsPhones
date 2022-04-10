@@ -39,11 +39,11 @@
     <string name="comments">comments</string>
     <string name="request">طلب</string>
     <string name="request_doctor_phone">اطلب رقم طبيب</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel">الغاء</string>
     <string name="ok">تم</string>
     <string name="confirm">تأكيد</string>
+    <string name="close">اغلاق</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -53,4 +53,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="search">البحث</string>
     <string name="contacts">contacts</string>
+    <string name="doctor_province_required">يرجى اختيار الماحفظة</string>
+    <string name="doctor_specialization_required">يرجى اختيار التخصص</string>
+    <string name="required_field">الحقل مطلوب</string>
+    <string name="please_wait">يرجى الانتظار…</string>
+    <string name="error_occurred">حصل خطأ</string>
+    <string name="success_message">تمت العملية بنجاح</string>
+    <string name="clear_form">محو البيانات</string>
+    <string name="add">اضافة</string>
+    <string name="update">تحديث</string>
+    <string name="phone_invalid">رقم الهاتف غير صحيح</string>
 </resources>

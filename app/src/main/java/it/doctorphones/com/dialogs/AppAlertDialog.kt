@@ -104,6 +104,7 @@ class AppAlertDialog(context: Context) : AlertDialog(context) {
                 alertDialogBtnPositive.visibility = View.GONE
                 alertDialogBtnNegative.visibility = View.GONE
                 alertDialogProgressBar.visibility = View.GONE
+                alertDialogBtnNegative.text = context.getText(R.string.cancel)
             }
             builder?.dismiss()
         }
@@ -118,6 +119,16 @@ class AppAlertDialog(context: Context) : AlertDialog(context) {
      */
     fun showErrorMessage(title: String, content: String?) {
         dismiss()
+        with(binding) {
+            alertDialogTxtAlertTitle.text = title
+            alertDialogTxtAlertContent.text = content
+            alertDialogBtnNegative.visibility = View.VISIBLE
+            alertDialogBtnNegative.text = context.getText(R.string.close)
+            alertDialogBtnNegative.setOnClickListener { dismiss() }
+        }
+        if(builder != null) {
+            builder!!.show()
+        }
     }
 
     /**
@@ -128,6 +139,15 @@ class AppAlertDialog(context: Context) : AlertDialog(context) {
      */
     fun showSuccessMessage(title: String, content: String?) {
         dismiss()
+        with(binding) {
+            alertDialogTxtAlertTitle.text = title
+            alertDialogTxtAlertContent.text = content
+            alertDialogBtnPositive.visibility = View.VISIBLE
+            alertDialogBtnPositive.setOnClickListener { dismiss() }
+        }
+        if(builder != null) {
+            builder!!.show()
+        }
     }
 
     /**
