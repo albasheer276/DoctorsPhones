@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:layout_width="200dp">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="8dp"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -40,34 +39,16 @@
                 android:layout_marginTop="10dp"
                 tools:text="بابل - الحلة - شارع 60 - مجمع حمورابي الطبي" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/docPhone_btnDoctorDetails"
+                style="@style/SmallSecondaryButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
-
-                <ImageView
-                    android:id="@+id/docPhone_btnDoctorOnMap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/map_marker_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_maker_icon" />
-
-                <TextView
-                    android:id="@+id/docPhone_btnDoctorDetails"
-                    style="@style/SmallSecondaryButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="23dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/phones"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/phones" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

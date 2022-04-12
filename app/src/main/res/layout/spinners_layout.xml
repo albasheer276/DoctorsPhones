@@ -36,7 +36,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:padding="5dp"
-            android:tag="-1"
+            android:tag="0"
             android:text="@string/specialization"
             android:textColor="@color/md_theme_light_onPrimaryContainer" />
 
@@ -73,7 +73,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:padding="5dp"
-            android:tag="-1"
+            android:tag="0"
             android:text="@string/province"
             android:textColor="@color/md_theme_light_onPrimaryContainer" />
 

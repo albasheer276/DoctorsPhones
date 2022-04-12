@@ -58,7 +58,6 @@ dependencies {
     // coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0-native-mt")
 
-
     // avatar profile image
     implementation "io.getstream:avatarview-coil:1.0.4"
 
@@ -78,7 +77,13 @@ dependencies {
     // permissions
     implementation 'com.github.AraujoJordan:ExcuseMe:0.9.5'
 
-
     // phone number formatter
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.46'
+
+    // recycler view
+    implementation 'com.jude:rollviewpager:1.4.6'
+    implementation 'com.jude:easyrecyclerview:4.4.3'
+
+    // time ago
+    implementation 'com.github.marlonlom:timeago:4.0.3'
 }

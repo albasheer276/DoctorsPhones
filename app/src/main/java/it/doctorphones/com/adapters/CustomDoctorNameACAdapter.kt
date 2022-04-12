@@ -1,23 +1,17 @@
 package it.doctorphones.com.adapters
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Filter
-import android.widget.TextView
-import it.doctorphones.com.R
-import it.doctorphones.com.databinding.FragmentAddDoctorPhoneBinding
 import it.doctorphones.com.models.Doctor
 
-class DoctorNameAutoCompleteAdapter(
-    private val mContext: Context,
-    private val mLayoutResourceId: Int,
-    doctors: ArrayList<Doctor>,
-    private val mConvertView: FragmentAddDoctorPhoneBinding
+class CustomDoctorNameACAdapter(
+    mContext: Context,
+    mLayoutResourceId: Int,
+    doctors: ArrayList<Doctor>
 ) :
     ArrayAdapter<Doctor>(mContext, mLayoutResourceId, doctors) {
     private val doctor: MutableList<Doctor> = ArrayList(doctors)

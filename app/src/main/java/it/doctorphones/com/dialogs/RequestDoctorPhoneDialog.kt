@@ -2,6 +2,7 @@ package it.doctorphones.com.dialogs
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,9 @@ import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import it.doctorphones.com.R
-import it.doctorphones.com.databinding.ReportDoctorPhoneDialogLayoutBinding
-import it.doctorphones.com.databinding.RequestDoctorPhoneDialogLayoutBinding
-import it.doctorphones.com.databinding.SpinnerDialogLayoutBinding
+import it.doctorphones.com.databinding.RequestForumDialogLayoutBinding
 import it.doctorphones.com.utils.SearchableSpinnerUtil
 import it.doctorphones.com.utils.provinces
-import it.doctorphones.com.utils.reportReasons
 import it.doctorphones.com.utils.specializations
 
 class RequestDoctorPhoneDialog(
@@ -23,7 +21,7 @@ class RequestDoctorPhoneDialog(
     private val onSaveClickListener: (province: String, specialize: String, doctorName: String) -> Unit
 ) : DialogFragment() {
 
-    private lateinit var mBinding: RequestDoctorPhoneDialogLayoutBinding
+    private lateinit var mBinding: RequestForumDialogLayoutBinding
 
     companion object {
         const val TAG = "RequestDoctorPhoneDialog_DP"
@@ -45,7 +43,7 @@ class RequestDoctorPhoneDialog(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mBinding = RequestDoctorPhoneDialogLayoutBinding.inflate(inflater)
+        mBinding = RequestForumDialogLayoutBinding.inflate(inflater)
         return mBinding.root
     }
 
@@ -59,6 +57,7 @@ class RequestDoctorPhoneDialog(
                 "المحافظات",
             ) { position, selectedString ->
                 spinnerBinding.spinnerProvincesTxtValue.text = selectedString
+                spinnerBinding.spinnerProvincesTxtValue.tag = position.toString()
             }
         }
 
@@ -69,13 +68,29 @@ class RequestDoctorPhoneDialog(
                 "التخصصات",
             ) { position, selectedString ->
                 spinnerBinding.spinnerSpecializationsTxtValue.text = selectedString
+                spinnerBinding.spinnerSpecializationsTxtValue.tag = position.toString()
             }
         }
 
         mBinding.requestDoctorPhoneDialogBtnRequest.setOnClickListener {
+            var province = spinnerBinding.spinnerProvincesTxtValue.text.toString()
+            var specialize = spinnerBinding.spinnerSpecializationsTxtValue.text.toString()
+            if (spinnerBinding.spinnerProvincesTxtValue.tag.toString() == "0") {
+                province = "0"
+            }
+            if (spinnerBinding.spinnerSpecializationsTxtValue.tag.toString() == "0") {
+                specialize = "0"
+            }
+            if (mBinding.requestDoctorPhoneDialogEdtDoctorName.text.isBlank()) {
+                mBinding.requestDoctorPhoneDialogTxtDoctorName.text = getText(R.string.required_field)
+                mBinding.requestDoctorPhoneDialogTxtDoctorName.visibility = View.VISIBLE
+                return@setOnClickListener
+            } else {
+                mBinding.requestDoctorPhoneDialogTxtDoctorName.visibility = View.GONE
+            }
             onSaveClickListener(
-                spinnerBinding.spinnerProvincesTxtValue.text.toString(),
-                spinnerBinding.spinnerSpecializationsTxtValue.text.toString(),
+                province,
+                specialize,
                 mBinding.requestDoctorPhoneDialogEdtDoctorName.text.toString()
             )
             dismiss()

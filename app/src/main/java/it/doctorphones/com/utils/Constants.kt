@@ -1,6 +1,7 @@
 package it.doctorphones.com.utils
 
 val provinces = arrayListOf(
+    "كل المحافظات",
     "بابل",
     "بغداد",
     "اربيل",
@@ -22,8 +23,10 @@ val provinces = arrayListOf(
 )
 
 val specializations = arrayListOf(
+    "كل التخصصات",
     "دكتور باطنية واطفال",
     "دكتور أسنان",
+    "دكتور نسائية وتوليد",
 )
 
 val reportReasons = arrayListOf(
@@ -35,5 +38,6 @@ val reportReasons = arrayListOf(
 const val PASSWORD = "password"
 const val USERS_TABLE = "users"
 const val DOCTORS_TABLE = "doctors"
+const val FORUMS_TABLE = "forums"
 
 const val PICK_CONTACT_INTENT = 20332

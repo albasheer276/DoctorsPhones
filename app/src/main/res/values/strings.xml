@@ -27,7 +27,7 @@
     <string name="call">call</string>
     <string name="copy">copy</string>
     <string name="phone_not_working">رقم الهاتف لايعمل؟</string>
-    <string name="_07xx_xxx_xxxx">07xx xxx xxxx</string>
+    <string name="_07xx_xxx">07xx xxx xxxx</string>
     <string name="click_to_show_number">اضغط هنا لعرض الرقم</string>
     <string name="second_number">الرقم الثاني</string>
     <string name="third_number">الرقم الثالث</string>
@@ -53,7 +53,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="search">البحث</string>
     <string name="contacts">contacts</string>
-    <string name="doctor_province_required">يرجى اختيار الماحفظة</string>
+    <string name="doctor_province_required">يرجى اختيار المحافظة</string>
     <string name="doctor_specialization_required">يرجى اختيار التخصص</string>
     <string name="required_field">الحقل مطلوب</string>
     <string name="please_wait">يرجى الانتظار…</string>
@@ -63,4 +63,7 @@
     <string name="add">اضافة</string>
     <string name="update">تحديث</string>
     <string name="phone_invalid">رقم الهاتف غير صحيح</string>
+    <string name="no_data">لا توجد بيانات</string>
+    <string name="phone_number_copied">تم نسخ الرقم</string>
+    <string name="add_forum_request">add forum request</string>
 </resources>

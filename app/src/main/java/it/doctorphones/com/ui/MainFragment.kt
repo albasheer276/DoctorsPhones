@@ -22,16 +22,6 @@ class MainFragment : Fragment() {
     private lateinit var mBinding: FragmentMainBinding
     private lateinit var mNavController: NavController
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // handle the back pressed action, to close the app, and do not open the splash screen again
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                requireActivity().finish()
-            }
-        })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +38,7 @@ class MainFragment : Fragment() {
         }
 
         val activity = (activity as AppCompatActivity)
-        // set the support action to the toolbar view that added to the fragemnt
+        // set the support action to the toolbar view that added to the fragment
         activity.setSupportActionBar(mBinding.contentMain.contentMainToolbar)
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
 

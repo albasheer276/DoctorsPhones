@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/asas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?selectableItemBackground"
@@ -23,8 +24,8 @@
 
             <io.getstream.avatarview.AvatarView
                 android:id="@+id/forumItem_avatarView"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:avatarViewBorderColor="@color/md_theme_light_primary"
@@ -32,7 +33,7 @@
                 app:avatarViewInitials="TB"
                 app:avatarViewInitialsBackgroundColor="@color/md_theme_light_inversePrimary"
                 app:avatarViewInitialsTextColor="@color/md_theme_light_onBackground"
-                app:avatarViewInitialsTextSize="20sp"
+                app:avatarViewInitialsTextSize="16sp"
                 app:avatarViewShape="circle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +73,7 @@
                 android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/forumItem_avatarView"
-                tools:text="اريد رقم د. علي حسين جاسم" />
+                tools:text="اريد رقم د. علي حسين جاسم (بابل)" />
 
             <TextView
                 android:id="@+id/forumItem_txtSpecialization"
@@ -114,6 +115,8 @@
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/comments"
                 android:src="@drawable/ic_bell_icon"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="@+id/forumItem_txtCommentsCount"
                 app:layout_constraintStart_toEndOf="@+id/forumItem_txtCommentsCount"
                 app:layout_constraintTop_toTopOf="@+id/forumItem_txtCommentsCount" />

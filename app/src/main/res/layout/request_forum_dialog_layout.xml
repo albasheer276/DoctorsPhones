@@ -60,6 +60,17 @@
         app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_spinnerLayout"
         tools:ignore="TextFields" />
 
+    <TextView
+        android:id="@+id/requestDoctorPhoneDialog_txtDoctorName"
+        style="@style/FormAlertLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/requestDoctorPhoneDialog_edtDoctorName"
+        app:layout_constraintStart_toStartOf="@+id/requestDoctorPhoneDialog_edtDoctorName"
+        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_edtDoctorName"
+        tools:visibility="visible" />
+
     <Button
         android:id="@+id/requestDoctorPhoneDialog_btnRequest"
         style="@style/PrimaryButton"
@@ -68,5 +79,5 @@
         android:layout_marginTop="16dp"
         android:text="@string/request"
         app:layout_constraintEnd_toEndOf="@+id/requestDoctorPhoneDialog_edtDoctorName"
-        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_edtDoctorName" />
+        app:layout_constraintTop_toBottomOf="@+id/requestDoctorPhoneDialog_txtDoctorName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

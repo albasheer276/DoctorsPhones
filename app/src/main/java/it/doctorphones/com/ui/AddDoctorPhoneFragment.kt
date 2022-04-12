@@ -3,13 +3,10 @@ package it.doctorphones.com.ui
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.Settings
-import android.provider.SyncStateContract.Helpers.update
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -18,7 +15,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.araujo.jordan.excuseme.ExcuseMe
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +26,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.R
-import it.doctorphones.com.adapters.DoctorNameAutoCompleteAdapter
+import it.doctorphones.com.adapters.CustomDoctorNameACAdapter
 import it.doctorphones.com.databinding.FragmentAddDoctorPhoneBinding
 import it.doctorphones.com.dialogs.AppAlertDialog
 import it.doctorphones.com.models.Doctor
@@ -63,7 +59,7 @@ class AddDoctorPhoneFragment : Fragment() {
                 val cursor = requireActivity().contentResolver.query(contactUri!!, null, null, null, null)
                 if (cursor!!.moveToFirst()) {
                     val column: Int = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                    val phone = Utils.formatNumber(cursor.getString(column), PhoneNumberUtil.PhoneNumberFormat.NATIONAL)
+                    val phone = Utils.formatNumber(cursor.getString(column), PhoneNumberUtil.PhoneNumberFormat.NATIONAL, false)
                     mSelectedEdtText.setText(phone)
                 }
             }
@@ -196,18 +192,17 @@ class AddDoctorPhoneFragment : Fragment() {
                 }
 
                 // set autocomplete
-                val adapter = DoctorNameAutoCompleteAdapter(
+                val adapter = CustomDoctorNameACAdapter(
                     requireContext(),
-                    android.R.layout.simple_list_item_1, doctors,
-                    mBinding
+                    android.R.layout.simple_list_item_1, doctors
                 )
                 edtDoctorName.setAdapter(adapter)
                 edtDoctorName.threshold = 1
                 edtDoctorName.setOnItemClickListener { _, _, i, _ ->
                     mSelectedDoctor = adapter.getItem(i)
                     edtDoctorName.setText(mSelectedDoctor?.name)
-                    edtDoctorPhone1.setText(Utils.formatNumber(mSelectedDoctor?.phone1, PhoneNumberUtil.PhoneNumberFormat.NATIONAL))
-                    edtDoctorPhone2.setText(Utils.formatNumber(mSelectedDoctor?.phone2, PhoneNumberUtil.PhoneNumberFormat.NATIONAL))
+                    edtDoctorPhone1.setText(Utils.formatNumber(mSelectedDoctor?.phone1, PhoneNumberUtil.PhoneNumberFormat.NATIONAL, false))
+                    edtDoctorPhone2.setText(Utils.formatNumber(mSelectedDoctor?.phone2, PhoneNumberUtil.PhoneNumberFormat.NATIONAL, false))
                     edtDoctorCity.setText(mSelectedDoctor?.city)
                     edtDoctorStreet.setText(mSelectedDoctor?.street)
                     edtDoctorBuilding.setText(mSelectedDoctor?.building)
@@ -319,8 +314,10 @@ class AddDoctorPhoneFragment : Fragment() {
         edtDoctorBuilding.setText("")
         edtDoctorProvince.text = "المحافظة"
         edtDoctorSpecialize.text = "الاختصاص"
-        edtDoctorProvince.tag = "-1"
-        edtDoctorSpecialize.tag = "-1"
+        txtDoctorProvince.text = ""
+        txtDoctorSpecialize.text = ""
+        edtDoctorProvince.tag = "0"
+        edtDoctorSpecialize.tag = "0"
 
         edtDoctorName.isEnabled = true
         edtDoctorPhone1.isEnabled = true
@@ -335,7 +332,7 @@ class AddDoctorPhoneFragment : Fragment() {
     }
 
     private fun checkSpinnerEmpty(edt: TextView, txt: TextView, errorMessageRes: Int): Boolean {
-        return if (edt.tag.equals("-1")) {
+        return if (edt.tag.equals("0")) {
             txt.visibility = View.VISIBLE
             txt.text = resources.getText(errorMessageRes)
             if (!mIsFormEmpty) mIsFormEmpty = true

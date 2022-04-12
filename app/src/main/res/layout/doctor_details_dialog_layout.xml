@@ -67,6 +67,7 @@
         android:layout_marginStart="16dp"
         android:contentDescription="@string/map_marker_button"
         android:scaleType="centerCrop"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorAddress"
@@ -161,7 +162,7 @@
                 style="@style/BottomSheetPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/_07xx_xxx_xxxx"
+                android:text="@string/_07xx_xxx"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -273,7 +274,7 @@
                 style="@style/BottomSheetPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/_07xx_xxx_xxxx"
+                android:text="@string/_07xx_xxx"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -298,12 +299,12 @@
 
     <Button
         android:id="@+id/doctorDetailsDialog_btnAddToMyDoctors"
-        style="@style/SecondaryButton"
+        style="@style/PrimaryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/add_to_my_doctors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
