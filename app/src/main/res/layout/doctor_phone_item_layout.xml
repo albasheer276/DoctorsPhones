@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center"
                 tools:text="باطنية وأطفال" />
 
             <TextView
@@ -37,18 +38,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
                 tools:text="بابل - الحلة - شارع 60 - مجمع حمورابي الطبي" />
 
-            <TextView
-                android:id="@+id/docPhone_btnDoctorDetails"
-                style="@style/SmallSecondaryButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="@string/phones" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

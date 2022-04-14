@@ -1,14 +1,21 @@
 package it.doctorphones.com.models
 
+import com.google.firebase.database.Exclude
+
 data class ForumRequest(
     val id: String? = "",
     val userId: String? = "",
-    val userName: String? = "بشير قيس",
+    var userName: String? = "",
+    var userProfile: String? = "",
     val createdDate: String? = "",
     val province: String? = "",
     val specialization: String? = "",
     val doctorName: String? = "",
+
+    @Exclude @JvmField
     val notificationsCount: Int = 0,
-    val commentsCount: Int = 0
+
+    @Exclude @JvmField
+    var commentsCount: Int = 0
 ) {
 }

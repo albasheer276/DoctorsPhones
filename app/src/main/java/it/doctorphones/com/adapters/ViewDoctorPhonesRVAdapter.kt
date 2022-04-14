@@ -30,7 +30,7 @@ class ViewDoctorPhonesRVAdapter(mContext: Context, private val clickListener: (D
                 docPhoneTxtDoctorName.text = doctor.name
                 docPhoneTxtDoctorSpecialize.text = doctor.specialization
                 docPhoneTxtDoctorAddress.text = "${doctor.province} - ${doctor.city} - ${doctor.street} - ${doctor.building}"
-                docPhoneBtnDoctorDetails.setOnClickListener {
+                root.setOnClickListener {
                     clickListener(doctor)
                 }
             }

@@ -9,8 +9,4 @@
     <item android:id="@+id/menuViewDoctorPhones"
         android:title="@string/doctor_phones"
         android:icon="@drawable/ic_home_icon" />
-
-    <item android:id="@+id/menuAddDoctor"
-        android:title="@string/add_doctor"
-        android:icon="@drawable/ic_add_doctor_icon" />
 </menu>

@@ -21,7 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.R
 import it.doctorphones.com.adapters.ViewDoctorPhonesRVAdapter
 import it.doctorphones.com.databinding.FragmentViewDoctorPhonesBinding
+import it.doctorphones.com.dialogs.AddDoctorPhoneDialog
 import it.doctorphones.com.dialogs.DoctorDetailsBottomDialog
+import it.doctorphones.com.managers.RtlGridLayoutManager
 import it.doctorphones.com.models.Doctor
 import it.doctorphones.com.utils.DOCTORS_TABLE
 import it.doctorphones.com.utils.SearchableSpinnerUtil
@@ -116,6 +118,11 @@ class ViewDoctorPhonesFragment : Fragment() {
         mBinding.viewDoctorPhonesRvDoctorPhones.setRefreshListener {
             loadDoctorPhones()
         }
+
+        mBinding.viewDoctorPhonesBtnAddDoctor.setOnClickListener {
+            val dialog = AddDoctorPhoneDialog.newInstance()
+            dialog.show(parentFragmentManager, AddDoctorPhoneDialog.TAG)
+        }
     }
 
     private fun filterDoctorPhones() {
@@ -167,7 +174,7 @@ class ViewDoctorPhonesFragment : Fragment() {
     private fun initRecyclerView() {
         mBinding.viewDoctorPhonesRvDoctorPhones.apply {
             // check if the device is a tablet
-            setLayoutManager(GridLayoutManager(context, 2))
+            setLayoutManager(RtlGridLayoutManager(context, 2))
             mAdapter = ViewDoctorPhonesRVAdapter(context) { doctor ->
                 DoctorDetailsBottomDialog(doctor).show(parentFragmentManager, DoctorDetailsBottomDialog.TAG)
             }

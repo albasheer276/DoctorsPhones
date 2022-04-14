@@ -39,6 +39,7 @@
     <string name="comments">comments</string>
     <string name="request">طلب</string>
     <string name="request_doctor_phone">اطلب رقم طبيب</string>
+    <string name="requesting_doctor_phone">طلب رقم طبيب</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancel">الغاء</string>
     <string name="ok">تم</string>
@@ -66,4 +67,6 @@
     <string name="no_data">لا توجد بيانات</string>
     <string name="phone_number_copied">تم نسخ الرقم</string>
     <string name="add_forum_request">add forum request</string>
+    <string name="delete_chat">حذف الطلب</string>
+    <string name="write_here">اكتب هنا…</string>
 </resources>

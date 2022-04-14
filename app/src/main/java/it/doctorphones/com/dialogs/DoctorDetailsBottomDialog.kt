@@ -1,17 +1,16 @@
 package it.doctorphones.com.dialogs
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import it.doctorphones.com.R
@@ -27,6 +26,15 @@ class DoctorDetailsBottomDialog(private val doctor: Doctor) : BottomSheetDialogF
 
     companion object {
         const val TAG = "DoctorDetailsBottomDialog_DP"
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BottomSheetBehavior.from(mBinding.root.parent as View).apply {
+            //isFitToContents = false
+            state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
     }
 
     override fun onCreateView(
@@ -67,12 +75,12 @@ class DoctorDetailsBottomDialog(private val doctor: Doctor) : BottomSheetDialogF
             }
         }
 
-        mBinding.doctorDetailsDialogTxtShowDoctorPhone1.setOnClickListener {
+        mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone1.setOnClickListener {
             mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone1.visibility = View.GONE
             mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone1.visibility = View.VISIBLE
         }
 
-        mBinding.doctorDetailsDialogTxtShowDoctorPhone2.setOnClickListener {
+        mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone2.setOnClickListener {
             mBinding.doctorDetailsDialogLayoutHiddenDoctorPhone2.visibility = View.GONE
             mBinding.doctorDetailsDialogLayoutVisibleDoctorPhone2.visibility = View.VISIBLE
         }

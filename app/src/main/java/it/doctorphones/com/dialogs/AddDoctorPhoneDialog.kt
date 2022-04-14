@@ -1,4 +1,4 @@
-package it.doctorphones.com.ui
+package it.doctorphones.com.dialogs
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -13,9 +13,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.DialogFragment
 import com.araujo.jordan.excuseme.ExcuseMe
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -27,8 +28,7 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.R
 import it.doctorphones.com.adapters.CustomDoctorNameACAdapter
-import it.doctorphones.com.databinding.FragmentAddDoctorPhoneBinding
-import it.doctorphones.com.dialogs.AppAlertDialog
+import it.doctorphones.com.databinding.AddDoctorPhoneDialogLayoutBinding
 import it.doctorphones.com.models.Doctor
 import it.doctorphones.com.utils.*
 import java.text.SimpleDateFormat
@@ -37,10 +37,10 @@ import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
-class AddDoctorPhoneFragment : Fragment() {
+class AddDoctorPhoneDialog : DialogFragment() {
     private val _tag = "AddDoctorPhoneFragment_DP"
 
-    private lateinit var mBinding: FragmentAddDoctorPhoneBinding
+    private lateinit var mBinding: AddDoctorPhoneDialogLayoutBinding
     private lateinit var mSelectedEdtText: EditText
     private lateinit var mDialog: AppAlertDialog
 
@@ -49,6 +49,13 @@ class AddDoctorPhoneFragment : Fragment() {
 
     @Inject
     lateinit var database: DatabaseReference
+
+    companion object {
+        const val TAG = "RequestDoctorPhoneDialog_DP"
+        fun newInstance(): AddDoctorPhoneDialog {
+            return AddDoctorPhoneDialog()
+        }
+    }
 
     private var resultContactLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
@@ -86,11 +93,11 @@ class AddDoctorPhoneFragment : Fragment() {
             }
         }
 
-        if (it.id == mBinding.addDoctorImgDoctorPhone1.id) {
-            mSelectedEdtText = mBinding.addDoctorEdtDoctorPhone1
+        if (it.id == mBinding.addDoctorDialogImgDoctorPhone1.id) {
+            mSelectedEdtText = mBinding.addDoctorDialogEdtDoctorPhone1
         }
-        if (it.id == mBinding.addDoctorImgDoctorPhone2.id) {
-            mSelectedEdtText = mBinding.addDoctorEdtDoctorPhone2
+        if (it.id == mBinding.addDoctorDialogImgDoctorPhone2.id) {
+            mSelectedEdtText = mBinding.addDoctorDialogEdtDoctorPhone2
         }
     }
 
@@ -118,11 +125,20 @@ class AddDoctorPhoneFragment : Fragment() {
     private lateinit var txtDoctorStreet: TextView
     private lateinit var edtDoctorBuilding: EditText
     private lateinit var txtDoctorBuilding: TextView
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.MATCH_PARENT
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = FragmentAddDoctorPhoneBinding.inflate(layoutInflater)
+        mBinding = AddDoctorPhoneDialogLayoutBinding.inflate(layoutInflater)
         mDialog = AppAlertDialog(requireContext())
         return mBinding.root
     }
@@ -130,28 +146,28 @@ class AddDoctorPhoneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spinnerBinding = mBinding.addDoctorSpinnerLayout
+        val spinnerBinding = mBinding.addDoctorDialogSpinnerLayout
         // get all values
-        edtDoctorName = mBinding.addDoctorEdtDoctorName
-        txtDoctorName = mBinding.addDoctorTxtDoctorName
-        edtDoctorPhone1 = mBinding.addDoctorEdtDoctorPhone1
-        txtDoctorPhone1 = mBinding.addDoctorTxtDoctorPhone1
-        imgDoctorPhone1 = mBinding.addDoctorImgDoctorPhone1
-        edtDoctorPhone2 = mBinding.addDoctorEdtDoctorPhone2
-        txtDoctorPhone2 = mBinding.addDoctorTxtDoctorPhone2
-        imgDoctorPhone2 = mBinding.addDoctorImgDoctorPhone2
+        edtDoctorName = mBinding.addDoctorDialogEdtDoctorName
+        txtDoctorName = mBinding.addDoctorDialogTxtDoctorName
+        edtDoctorPhone1 = mBinding.addDoctorDialogEdtDoctorPhone1
+        txtDoctorPhone1 = mBinding.addDoctorDialogTxtDoctorPhone1
+        imgDoctorPhone1 = mBinding.addDoctorDialogImgDoctorPhone1
+        edtDoctorPhone2 = mBinding.addDoctorDialogEdtDoctorPhone2
+        txtDoctorPhone2 = mBinding.addDoctorDialogTxtDoctorPhone2
+        imgDoctorPhone2 = mBinding.addDoctorDialogImgDoctorPhone2
         layoutDoctorProvince = spinnerBinding.spinnerProvinces
         edtDoctorProvince = spinnerBinding.spinnerProvincesTxtValue
         txtDoctorProvince = spinnerBinding.spinnerProvincesAlertValue
         layoutDoctorSpecialize = spinnerBinding.spinnerSpecializations
         edtDoctorSpecialize = spinnerBinding.spinnerSpecializationsTxtValue
         txtDoctorSpecialize = spinnerBinding.spinnerSpecializationsAlertValue
-        edtDoctorCity = mBinding.addDoctorEdtDoctorCity
-        txtDoctorCity = mBinding.addDoctorTxtDoctorCity
-        edtDoctorStreet = mBinding.addDoctorEdtDoctorStreet
-        txtDoctorStreet = mBinding.addDoctorTxtDoctorStreet
-        edtDoctorBuilding = mBinding.addDoctorEdtDoctorBuilding
-        txtDoctorBuilding = mBinding.addDoctorTxtDoctorBuilding
+        edtDoctorCity = mBinding.addDoctorDialogEdtDoctorCity
+        txtDoctorCity = mBinding.addDoctorDialogTxtDoctorCity
+        edtDoctorStreet = mBinding.addDoctorDialogEdtDoctorStreet
+        txtDoctorStreet = mBinding.addDoctorDialogTxtDoctorStreet
+        edtDoctorBuilding = mBinding.addDoctorDialogEdtDoctorBuilding
+        txtDoctorBuilding = mBinding.addDoctorDialogTxtDoctorBuilding
 
         spinnerBinding.spinnerProvinces.setOnClickListener {
             SearchableSpinnerUtil.setupSearchableSpinner(
@@ -224,7 +240,7 @@ class AddDoctorPhoneFragment : Fragment() {
                         edtDoctorPhone2.background = resources.getDrawable(R.drawable.rounded_bordered_disabled_bg, requireActivity().theme)
                     }*/
 
-                    mBinding.addDoctorBtnSave.text = getString(R.string.update)
+                    mBinding.addDoctorDialogBtnSave.text = getString(R.string.update)
 
                 }
             }
@@ -233,7 +249,7 @@ class AddDoctorPhoneFragment : Fragment() {
             }
         })
 
-        mBinding.addDoctorBtnSave.setOnClickListener {
+        mBinding.addDoctorDialogBtnSave.setOnClickListener {
             // check if empty
             mIsFormEmpty = false
             checkEditTextEmpty(edtDoctorName, txtDoctorName, R.string.required_field)
@@ -248,14 +264,14 @@ class AddDoctorPhoneFragment : Fragment() {
             }
 
             //check validation (phone Format, Correct Names, etc...)
-            if(!Utils.isValidPhoneNumber(edtDoctorPhone1.text.toString())){
+            if (!Utils.isValidPhoneNumber(edtDoctorPhone1.text.toString())) {
                 txtDoctorPhone1.text = getString(R.string.phone_invalid)
                 txtDoctorPhone1.visibility = View.VISIBLE
                 return@setOnClickListener
             } else {
                 txtDoctorPhone1.visibility = View.GONE
             }
-            if(!Utils.isValidPhoneNumber(edtDoctorPhone2.text.toString())){
+            if (!Utils.isValidPhoneNumber(edtDoctorPhone2.text.toString())) {
                 txtDoctorPhone2.text = getString(R.string.phone_invalid)
                 txtDoctorPhone2.visibility = View.VISIBLE
                 return@setOnClickListener
@@ -289,18 +305,17 @@ class AddDoctorPhoneFragment : Fragment() {
                 createdByUserId = auth.currentUser!!.uid,
                 createdDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
             )
-            mDialog.loadingAlert("حفظ معلومات الطبيب", getString(R.string.please_wait))
-            database.child(DOCTORS_TABLE).child(key).setValue(doctor).addOnSuccessListener {
-                mDialog.showSuccessMessage("حفظ معلومات الطبيب", getString(R.string.success_message))
-                // clear All Form Fields
-                clearAllFormData()
-            }.addOnFailureListener {
-                mDialog.showErrorMessage("حفظ معلومات الطبيب", getString(R.string.error_occurred))
-            }
+            database.child(DOCTORS_TABLE).child(key).setValue(doctor)
+            mDialog.showSuccessMessage("حفظ معلومات الطبيب", getString(R.string.success_message))
+            dismiss()
         }
 
-        mBinding.addDoctorBtnClearForm.setOnClickListener {
+        mBinding.addDoctorDialogBtnClearForm.setOnClickListener {
             clearAllFormData()
+        }
+
+        mBinding.addDoctorDialogImgClose.setOnClickListener {
+            dismiss()
         }
     }
 
@@ -328,7 +343,7 @@ class AddDoctorPhoneFragment : Fragment() {
         /*edtDoctorPhone1.background = resources.getDrawable(R.drawable.rounded_bordered_bg, requireActivity().theme)
         edtDoctorPhone2.background = resources.getDrawable(R.drawable.rounded_bordered_bg, requireActivity().theme)*/
 
-        mBinding.addDoctorBtnSave.text = getString(R.string.add)
+        mBinding.addDoctorDialogBtnSave.text = getString(R.string.add)
     }
 
     private fun checkSpinnerEmpty(edt: TextView, txt: TextView, errorMessageRes: Int): Boolean {

@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_theme_light_background">
+    android:background="@color/md_theme_light_background"
+    android:paddingBottom="8dp"
+    tools:context=".dialogs.DoctorDetailsBottomDialog">
 
     <TextView
         android:id="@+id/doctorDetailsDialog_txtDoctorName"
-        style="@style/BottomSheetHeader"
+        style="@style/DialogHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/request_doctor_phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,272 +33,272 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_close"
-        app:tint="@color/md_theme_light_onPrimaryContainer" />
+        app:tint="@color/md_theme_light_onSecondary" />
 
-    <TextView
-        android:id="@+id/doctorDetailsDialog_txtDoctorSpecialization"
-        style="@style/BottomSheetContent"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/doctorDetailsDialog_scrollLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:gravity="center"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/doctorDetailsDialog_btnAddToMyDoctors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorName"
-        tools:text="باطنية وأطفال" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/doctorDetailsDialog_txtDoctorAddress"
-        style="@style/BottomSheetContent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/doctorDetailsDialog_btnDoctorOnMap"
-        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorSpecialization"
-        tools:text="بابل - الحة - شارع 60 - مجمع حمورابي" />
-
-    <ImageView
-        android:id="@+id/doctorDetailsDialog_btnDoctorOnMap"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:contentDescription="@string/map_marker_button"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorAddress"
-        app:srcCompat="@drawable/ic_maker_icon" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/doctorDetailsDialog_layoutDoctorPhone1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorAddress">
-
-        <TextView
-            android:id="@+id/doctorDetailsDialog_lblDoctorPhone1"
-            style="@style/BottomSheetH1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/first_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorDetailsDialog_layoutVisibleDoctorPhone1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone1">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/doctorDetailsDialog_txtDoctorPhone1"
-                style="@style/BottomSheetPhone"
-                android:layout_width="0dp"
+                android:id="@+id/doctorDetailsDialog_txtDoctorSpecialization"
+                style="@style/BottomSheetContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="0783 130 3433" />
-
-            <ImageView
-                android:id="@+id/doctorDetailsDialog_imgCallPhone1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/call"
-                app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
-                app:srcCompat="@drawable/ic_phone_icon" />
-
-            <ImageView
-                android:id="@+id/doctorDetailsDialog_imgCopyPhone1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/copy"
-                app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
-                app:layout_constraintEnd_toStartOf="@+id/doctorDetailsDialog_imgCallPhone1"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
-                app:srcCompat="@drawable/ic_copy_icon" />
-
-            <TextView
-                android:id="@+id/doctorDetailsDialog_lblReportPhone1"
-                style="@style/BottomSheetLink"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/phone_not_working"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorDetailsDialog_layoutHiddenDoctorPhone1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone1">
-
-            <TextView
-                android:id="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1"
-                style="@style/BottomSheetPhone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/_07xx_xxx"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/doctorDetailsDialog_txtShowDoctorPhone1"
-                style="@style/BottomSheetLink"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:paddingHorizontal="10dp"
-                android:text="@string/click_to_show_number"
-                android:textSize="17sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/doctorDetailsDialog_layoutDoctorPhone2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_layoutDoctorPhone1">
-
-        <TextView
-            android:id="@+id/doctorDetailsDialog_lblDoctorPhone2"
-            style="@style/BottomSheetH1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/second_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorDetailsDialog_layoutVisibleDoctorPhone2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone2">
+                tools:text="باطنية وأطفال" />
 
             <TextView
-                android:id="@+id/doctorDetailsDialog_txtDoctorPhone2"
-                style="@style/BottomSheetPhone"
-                android:layout_width="0dp"
+                android:id="@+id/doctorDetailsDialog_txtDoctorAddress"
+                style="@style/BottomSheetContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="0783 130 3433" />
+                android:layout_marginTop="16dp"
+                android:gravity="right"
+                tools:text="بابل - الحلة - شارع 60 - مجمع حمورابي" />
 
             <ImageView
-                android:id="@+id/doctorDetailsDialog_imgCallPhone2"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/call"
-                app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
-                app:srcCompat="@drawable/ic_phone_icon" />
+                android:id="@+id/doctorDetailsDialog_btnDoctorOnMap"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@string/map_marker_button"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_maker_icon" />
 
-            <ImageView
-                android:id="@+id/doctorDetailsDialog_imgCopyPhone2"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:contentDescription="@string/copy"
-                app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
-                app:layout_constraintEnd_toStartOf="@+id/doctorDetailsDialog_imgCallPhone2"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
-                app:srcCompat="@drawable/ic_copy_icon" />
-
-            <TextView
-                android:id="@+id/doctorDetailsDialog_lblReportPhone2"
-                style="@style/BottomSheetLink"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/doctorDetailsDialog_layoutDoctorPhone1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/phone_not_working"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2" />
+                android:layout_marginTop="16dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/doctorDetailsDialog_lblDoctorPhone1"
+                    style="@style/BottomSheetH1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/doctorDetailsDialog_layoutHiddenDoctorPhone2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone2">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorDetailsDialog_layoutVisibleDoctorPhone1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone1">
 
-            <TextView
-                android:id="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2"
-                style="@style/BottomSheetPhone"
-                android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_txtDoctorPhone1"
+                        style="@style/BottomSheetPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="0783 130 3433" />
+
+                    <ImageView
+                        android:id="@+id/doctorDetailsDialog_imgCallPhone1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/call"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
+                        app:srcCompat="@drawable/ic_phone_icon" />
+
+                    <ImageView
+                        android:id="@+id/doctorDetailsDialog_imgCopyPhone1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/copy"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
+                        app:layout_constraintEnd_toStartOf="@+id/doctorDetailsDialog_imgCallPhone1"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone1"
+                        app:srcCompat="@drawable/ic_copy_icon" />
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_lblReportPhone1"
+                        style="@style/BottomSheetLink"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/phone_not_working"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorDetailsDialog_layoutHiddenDoctorPhone1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone1">
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1"
+                        style="@style/BottomSheetPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_07xx_xxx"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_txtShowDoctorPhone1"
+                        style="@style/BottomSheetLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="@string/click_to_show_number"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone1" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/doctorDetailsDialog_layoutDoctorPhone2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/_07xx_xxx"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_layoutDoctorPhone1">
 
-            <TextView
-                android:id="@+id/doctorDetailsDialog_txtShowDoctorPhone2"
-                style="@style/BottomSheetLink"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:gravity="center"
-                android:paddingHorizontal="10dp"
-                android:text="@string/click_to_show_number"
-                android:textSize="17sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2"
-                app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2" />
+                <TextView
+                    android:id="@+id/doctorDetailsDialog_lblDoctorPhone2"
+                    style="@style/BottomSheetH1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/second_number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorDetailsDialog_layoutVisibleDoctorPhone2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone2">
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_txtDoctorPhone2"
+                        style="@style/BottomSheetPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="0783 130 3433" />
+
+                    <ImageView
+                        android:id="@+id/doctorDetailsDialog_imgCallPhone2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/call"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
+                        app:srcCompat="@drawable/ic_phone_icon" />
+
+                    <ImageView
+                        android:id="@+id/doctorDetailsDialog_imgCopyPhone2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:contentDescription="@string/copy"
+                        app:layout_constraintBottom_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
+                        app:layout_constraintEnd_toStartOf="@+id/doctorDetailsDialog_imgCallPhone2"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_txtDoctorPhone2"
+                        app:srcCompat="@drawable/ic_copy_icon" />
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_lblReportPhone2"
+                        style="@style/BottomSheetLink"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/phone_not_working"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_txtDoctorPhone2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/doctorDetailsDialog_layoutHiddenDoctorPhone2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_lblDoctorPhone2">
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2"
+                        style="@style/BottomSheetPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_07xx_xxx"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/doctorDetailsDialog_txtShowDoctorPhone2"
+                        style="@style/BottomSheetLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:text="@string/click_to_show_number"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2"
+                        app:layout_constraintTop_toTopOf="@+id/doctorDetailsDialog_lblDoctorHiddenPhone2" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/doctorDetailsDialog_btnAddToMyDoctors"
@@ -304,9 +307,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="32dp"
         android:text="@string/add_to_my_doctors"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorDetailsDialog_layoutDoctorPhone2" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

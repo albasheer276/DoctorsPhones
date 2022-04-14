@@ -33,7 +33,7 @@ class ForumRequestsRVAdapter(mContext: Context, private val clickListener: (Foru
                 forumItemTxtSpecialization.text = if (request.specialization != "0") request.specialization else "لم يتم ذكر التخصص"
                 forumItemTxtBellsCount.text = request.notificationsCount.toString()
                 forumItemTxtCommentsCount.text = request.commentsCount.toString()
-                root.setOnClickListener {
+                forumItemLayout.setOnClickListener {
                     clickListener(request)
                 }
             }

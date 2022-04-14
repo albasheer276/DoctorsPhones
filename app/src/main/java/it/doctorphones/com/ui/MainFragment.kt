@@ -52,8 +52,7 @@ class MainFragment : Fragment() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.menuForum,
-                R.id.menuViewDoctorPhones,
-                R.id.menuAddDoctor
+                R.id.menuViewDoctorPhones
             )
         )
         // setup the action bar for the nav controller

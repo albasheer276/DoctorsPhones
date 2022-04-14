@@ -1,16 +1,14 @@
 package it.doctorphones.com.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -23,17 +21,18 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import it.doctorphones.com.R
 import it.doctorphones.com.adapters.ForumRequestsRVAdapter
-import it.doctorphones.com.adapters.ViewDoctorPhonesRVAdapter
 import it.doctorphones.com.databinding.FragmentForumDoctorBinding
 import it.doctorphones.com.dialogs.AppAlertDialog
-import it.doctorphones.com.dialogs.DoctorDetailsBottomDialog
 import it.doctorphones.com.dialogs.RequestDoctorPhoneDialog
-import it.doctorphones.com.models.Doctor
 import it.doctorphones.com.models.ForumRequest
+import it.doctorphones.com.models.User
 import it.doctorphones.com.utils.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class ForumDoctorFragment : Fragment() {
@@ -42,6 +41,7 @@ class ForumDoctorFragment : Fragment() {
 
     private lateinit var mBinding: FragmentForumDoctorBinding
     private lateinit var mDialog: AppAlertDialog
+    private lateinit var myUser: User
 
     @Inject
     lateinit var auth: FirebaseAuth
@@ -87,7 +87,10 @@ class ForumDoctorFragment : Fragment() {
             // check if the device is a tablet
             setLayoutManager(LinearLayoutManager(context))
             mAdapter = ForumRequestsRVAdapter(context) { request ->
-                Log.d(_tag, "initRecyclerView: ${request.doctorName}")
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainFragmentContainer, ForumChatFragment(request))
+                    .addToBackStack(null)
+                    .commit()
             }
             adapter = mAdapter
 
@@ -155,6 +158,18 @@ class ForumDoctorFragment : Fragment() {
             loadForumRequests()
         }
 
+        // get username and profile
+        database.child(USERS_TABLE).child(auth.currentUser!!.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue<User>()
+                if (user != null) {
+                    myUser = user
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
         mBinding.forumDoctorBtnAddForumRequest.setOnClickListener {
             val dialog = RequestDoctorPhoneDialog.newInstance(requireContext(), parentFragmentManager) { province, specialize, doctorName ->
                 val key = database.child(FORUMS_TABLE).push().key
@@ -164,20 +179,17 @@ class ForumDoctorFragment : Fragment() {
                 }
                 val request = ForumRequest(
                     id = key,
-                    userId = auth.currentUser!!.uid,
+                    userId = myUser.id,
                     createdDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
                     province = province,
                     specialization = specialize,
-                    doctorName = doctorName
+                    doctorName = doctorName,
+                    userName = myUser.name,
+                    userProfile = myUser.profile
                 )
-                mDialog.loadingAlert("حفظ الطلب", getString(R.string.please_wait))
                 database.child(FORUMS_TABLE).child(key).setValue(request)
-                    .addOnSuccessListener {
-                        mDialog.showSuccessMessage("حفظ الطلب", getString(R.string.success_message))
-                        loadForumRequests()
-                    }.addOnFailureListener {
-                        mDialog.showErrorMessage("حفظ الطلب", getString(R.string.error_occurred))
-                    }
+                mDialog.showSuccessMessage("حفظ الطلب", getString(R.string.success_message))
+                loadForumRequests()
             }
             dialog.show(parentFragmentManager, RequestDoctorPhoneDialog.TAG)
         }
@@ -191,10 +203,22 @@ class ForumDoctorFragment : Fragment() {
                     for (postSnapshot in snapshot.children) {
                         val request = postSnapshot.getValue<ForumRequest>()
                         if (request != null) {
-                            requests.add(request)
+                            database.child(CHATS_TABLE).child(request.id!!).addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    val numChildren = dataSnapshot.childrenCount
+                                    Log.d(_tag, "onDataChange: $numChildren")
+                                    request.commentsCount = numChildren.toInt()
+                                    requests.add(request)
+                                    Log.d(_tag, "onDataChange: sd")
+                                    filterForumRequest()
+                                }
+
+                                override fun onCancelled(databaseError: DatabaseError) {
+                                    Log.d(_tag, "onCancelled: ${request.id} error")
+                                }
+                            })
                         }
                     }
-                    filterForumRequest()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
