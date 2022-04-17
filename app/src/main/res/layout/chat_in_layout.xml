@@ -43,26 +43,35 @@
         app:layout_constraintTop_toTopOf="@+id/chatItem_txtName"
         tools:text="Tomato Bus" />
 
-    <TextView
-        android:id="@+id/chatItem_txtContent"
-        style="@style/ChatMessageContent"
-        android:background="@drawable/chat_in_bg"
-        android:maxWidth="300dp"
-        android:minWidth="150dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/chatItem_avatarView"
-        app:layout_constraintTop_toBottomOf="@+id/chatItem_avatarView"
-        tools:text="Tomato Bus" />
-
-    <TextView
-        android:id="@+id/chatItem_txtTimeAgo"
-        style="@style/TimeText"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chatItem_txtContent"
-        app:layout_constraintStart_toEndOf="@+id/chatItem_txtContent"
-        tools:text="9:20 AM" />
+        android:background="@drawable/chat_in_bg"
+        android:layout_marginTop="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintStart_toStartOf="@+id/chatItem_avatarView"
+        app:layout_constraintTop_toBottomOf="@+id/chatItem_avatarView">
+
+        <TextView
+            android:id="@+id/chatItem_txtContent"
+            style="@style/ChatMessageContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="300dp"
+            app:layout_constraintEnd_toStartOf="@+id/chatItem_txtTimeAgo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Tomato Bus" />
+
+        <TextView
+            android:id="@+id/chatItem_txtTimeAgo"
+            style="@style/TimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/chatItem_txtContent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="9:20 AM" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
