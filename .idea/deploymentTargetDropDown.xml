@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
-    <multipleDevicesSelectedInDropDown value="true" />
-    <runningDeviceTargetsSelectedWithDialog>
+    <runningDeviceTargetSelectedWithDropDown>
       <Target>
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="SERIAL_NUMBER" />
-            <value value="hu9x4t59jjmrrkyd" />
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\alattaba\.android\avd\Pixel_4_API_28.avd" />
           </Key>
         </deviceKey>
       </Target>
+    </runningDeviceTargetSelectedWithDropDown>
+    <timeTargetWasSelectedWithDropDown value="2022-04-17T08:57:16.547126500Z" />
+    <multipleDevicesSelectedInDropDown value="true" />
+    <runningDeviceTargetsSelectedWithDialog>
       <Target>
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>

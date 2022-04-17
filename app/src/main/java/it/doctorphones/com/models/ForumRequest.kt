@@ -11,6 +11,7 @@ data class ForumRequest(
     val province: String? = "",
     val specialization: String? = "",
     val doctorName: String? = "",
+    val chatMessages: HashMap<String, ChatMessage>? = null,
 
     @Exclude @JvmField
     val notificationsCount: Int = 0,

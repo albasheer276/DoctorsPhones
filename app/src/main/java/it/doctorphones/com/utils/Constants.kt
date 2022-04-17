@@ -39,6 +39,8 @@ const val PASSWORD = "password"
 const val USERS_TABLE = "users"
 const val DOCTORS_TABLE = "doctors"
 const val FORUMS_TABLE = "forums"
-const val CHATS_TABLE = "chats"
 
 const val PICK_CONTACT_INTENT = 20332
+
+const val OUT_CHAT = 0
+const val IN_CHAT = 1

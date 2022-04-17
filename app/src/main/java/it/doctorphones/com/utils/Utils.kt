@@ -7,6 +7,8 @@ import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.google.i18n.phonenumbers.Phonenumber
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -53,7 +55,6 @@ object Utils {
      * this use TimeAgo third party, it support the english and arabic formats
      *
      * @param datetime Datetime
-     * @param langTag Lang tag
      * @return
      */
     @SuppressLint("SimpleDateFormat")
@@ -64,14 +65,30 @@ object Utils {
                     ""
                 }
                 else -> {
-                    val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                    val localDateTime = parser.parse(datetime)!!
-                    val nowInSeconds: Long = localDateTime.time
-                    val localeByLanguageTag: Locale = Locale.forLanguageTag("AR")
+                    val localDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale("Arabic")).parse(datetime)!!
                     val messages = TimeAgoMessages.Builder()
-                        .withLocale(localeByLanguageTag)
+                        .withLocale(Locale.forLanguageTag("AR"))
                         .build()
-                    TimeAgo.using(nowInSeconds, messages)
+                    TimeAgo.using(localDateTime.time, messages)
+                }
+            }
+        } catch (e: Exception) {
+            ""
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun getTime(datetime: String?): String {
+        return try {
+            when {
+                datetime.isNullOrEmpty() -> {
+                    ""
+                }
+                else -> {
+                    val localDateTime = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale("Arabic")).parse(datetime)!!
+                    val dateFormatter = SimpleDateFormat("h:mm a")
+
+                    return dateFormatter.format(localDateTime)
                 }
             }
         } catch (e: Exception) {

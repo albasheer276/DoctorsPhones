@@ -69,4 +69,5 @@
     <string name="add_forum_request">add forum request</string>
     <string name="delete_chat">حذف الطلب</string>
     <string name="write_here">اكتب هنا…</string>
+    <string name="empty_chat">لا توجد رسائل</string>
 </resources>

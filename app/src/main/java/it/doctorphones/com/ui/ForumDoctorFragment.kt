@@ -203,22 +203,13 @@ class ForumDoctorFragment : Fragment() {
                     for (postSnapshot in snapshot.children) {
                         val request = postSnapshot.getValue<ForumRequest>()
                         if (request != null) {
-                            database.child(CHATS_TABLE).child(request.id!!).addListenerForSingleValueEvent(object : ValueEventListener {
-                                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                    val numChildren = dataSnapshot.childrenCount
-                                    Log.d(_tag, "onDataChange: $numChildren")
-                                    request.commentsCount = numChildren.toInt()
-                                    requests.add(request)
-                                    Log.d(_tag, "onDataChange: sd")
-                                    filterForumRequest()
-                                }
-
-                                override fun onCancelled(databaseError: DatabaseError) {
-                                    Log.d(_tag, "onCancelled: ${request.id} error")
-                                }
-                            })
+                            if (request.chatMessages != null) {
+                                request.commentsCount = request.chatMessages.size
+                            }
+                            requests.add(request)
                         }
                     }
+                    filterForumRequest()
                 }
 
                 override fun onCancelled(error: DatabaseError) {

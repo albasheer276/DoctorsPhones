@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="6dp"
+    android:paddingHorizontal="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <io.getstream.avatarview.AvatarView
+        android:id="@+id/chatItem_avatarView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:avatarViewBorderColor="@color/md_theme_light_primary"
+        app:avatarViewBorderWidth="0dp"
+        app:avatarViewInitials="TB"
+        app:avatarViewInitialsBackgroundColor="@color/md_theme_light_inversePrimary"
+        app:avatarViewInitialsTextColor="@color/md_theme_light_onBackground"
+        app:avatarViewInitialsTextSize="16sp"
+        app:avatarViewShape="circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chatItem_txtName"
+        style="@style/ChatName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chatItem_avatarView"
+        app:layout_constraintStart_toEndOf="@+id/chatItem_avatarView"
+        app:layout_constraintTop_toTopOf="@+id/chatItem_avatarView"
+        tools:text="Tomato Bus" />
+
+    <TextView
+        android:id="@+id/chatItem_txtNameDesc"
+        style="@style/TimeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chatItem_txtName"
+        app:layout_constraintStart_toEndOf="@+id/chatItem_txtName"
+        app:layout_constraintTop_toTopOf="@+id/chatItem_txtName"
+        tools:text="Tomato Bus" />
+
+    <TextView
+        android:id="@+id/chatItem_txtContent"
+        style="@style/ChatMessageContent"
+        android:background="@drawable/chat_in_bg"
+        android:maxWidth="300dp"
+        android:minWidth="150dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/chatItem_avatarView"
+        app:layout_constraintTop_toBottomOf="@+id/chatItem_avatarView"
+        tools:text="Tomato Bus" />
+
+    <TextView
+        android:id="@+id/chatItem_txtTimeAgo"
+        style="@style/TimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/chatItem_txtContent"
+        app:layout_constraintStart_toEndOf="@+id/chatItem_txtContent"
+        tools:text="9:20 AM" />
+</androidx.constraintlayout.widget.ConstraintLayout>
