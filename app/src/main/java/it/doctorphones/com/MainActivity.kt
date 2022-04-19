@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
         val window = this.window
-        window.statusBarColor = this.resources.getColor(R.color.md_theme_light_secondary, theme)
+        //window.statusBarColor = this.resources.getColor(R.color.md_theme_light_secondary, theme)
 
         /*val dialog = RequestDoctorPhoneDialog.newInstance(this, supportFragmentManager){ province, specialize, doctorName ->
 

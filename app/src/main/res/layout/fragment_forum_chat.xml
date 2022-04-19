@@ -4,8 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F0E7"
+    android:background="@color/md_theme_light_secondary"
     tools:context=".ui.ForumChatFragment">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/md_theme_light_inverseOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/forumChat_toolbar"
@@ -149,12 +158,12 @@
         android:id="@+id/forumChat_rvMessages"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_empty="@layout/empty_chat_layout"
-        app:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@+id/forumChat_chatLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forumChat_forumItemLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/forumChat_forumItemLayout"
+        app:layout_empty="@layout/empty_chat_layout"
+        app:scrollbars="none" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/forumChat_chatLayout"

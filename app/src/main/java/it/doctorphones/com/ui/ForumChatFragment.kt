@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import it.doctorphones.com.R
 import it.doctorphones.com.adapters.ChatForumRVAdapter
 import it.doctorphones.com.adapters.ViewDoctorPhonesRVAdapter
 import it.doctorphones.com.databinding.FragmentForumChatBinding
+import it.doctorphones.com.dialogs.AppAlertDialog
 import it.doctorphones.com.dialogs.DoctorDetailsBottomDialog
 import it.doctorphones.com.managers.RtlGridLayoutManager
 import it.doctorphones.com.models.ChatMessage
@@ -24,6 +26,7 @@ import it.doctorphones.com.models.ForumRequest
 import it.doctorphones.com.models.User
 import it.doctorphones.com.utils.*
 import kotlinx.coroutines.flow.emptyFlow
+import xyz.teamgravity.checkinternet.CheckInternet
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -33,8 +36,8 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
     private val _tag = "ForumChatFragment_DP"
 
     private lateinit var mBinding: FragmentForumChatBinding
+    private lateinit var mDialog: AppAlertDialog
     private val messages = mutableListOf<ChatMessage>()
-    private lateinit var myUser: User
 
     @Inject
     lateinit var auth: FirebaseAuth
@@ -44,12 +47,17 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
 
     private lateinit var edtMessage: EditText
     private lateinit var mAdapter: ChatForumRVAdapter
+    private val mSharedPref by lazy { AppSharedPref(requireContext(), LOGIN_SHARED_DATA) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        val window = requireActivity().window
+        window.statusBarColor = this.resources.getColor(R.color.md_theme_light_secondary, requireActivity().theme)
         mBinding = FragmentForumChatBinding.inflate(inflater)
+        mDialog = AppAlertDialog(requireContext())
         initRecyclerView()
         setHasOptionsMenu(true)
         return mBinding.root
@@ -58,19 +66,6 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // get username and profile
-        database.child(USERS_TABLE).child(auth.currentUser!!.uid).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue<User>()
-                if (user != null) {
-                    myUser = user
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
-
         loadNewChats()
 
         // set a custom toolbar
@@ -89,24 +84,57 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
             forumItemTxtCommentsCount.text = request.commentsCount.toString()
         }
 
-        mBinding.forumChatBtnSend.setOnClickListener {
-            if (edtMessage.text.isNotBlank()) {
-                val key = database.child(FORUMS_TABLE).child(request.id!!).child("chatMessages").push().key
-                if (key == null) {
-                    Log.w(_tag, "Couldn't get push key for $DOCTORS_TABLE")
-                    return@setOnClickListener
+        database.child(FORUMS_TABLE).child(request.id!!).child("chatMessages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.childrenCount >= 10) {
+                        mBinding.forumChatChatLayout.isVisible = false
+                    }
                 }
-                val message = ChatMessage(
-                    id = key,
-                    userId = myUser.id,
-                    userName = myUser.name,
-                    userProfile = myUser.profile,
-                    date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
-                    text = edtMessage.text.toString()
-                )
-                database.child(FORUMS_TABLE).child(request.id).child("chatMessages").child(key).setValue(message)
 
-                edtMessage.setText("")
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+        mBinding.forumChatBtnSend.setOnClickListener {
+            // check for network
+            CheckInternet().check { connected ->
+                if (!connected) {
+                    // there is no internet
+                    mDialog.showErrorMessage("خطأ", "لا يوجد اتصال بالانترنت!")
+                    return@check
+                }
+                // there is no internet
+                if (edtMessage.text.isNotBlank()) {
+                    database.child(FORUMS_TABLE).child(request.id!!).child("chatMessages")
+                        .addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                if (snapshot.childrenCount >= 10) {
+                                    mDialog.showErrorMessage("خطأ", "لقد وصلت الرسائل الى الحد الاقصى، لايمكن اضافة رسالة جديدة")
+                                } else {
+                                    val key = database.child(FORUMS_TABLE).child(request.id).child("chatMessages").push().key
+                                    if (key == null) {
+                                        Log.w(_tag, "Couldn't get push key for $DOCTORS_TABLE")
+                                        return
+                                    }
+                                    val message = ChatMessage(
+                                        id = key,
+                                        userId = mSharedPref.getString(USER_ID),
+                                        userName = mSharedPref.getString(USER_NAME),
+                                        userProfile = mSharedPref.getString(USER_PROFILE),
+                                        date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+                                        text = edtMessage.text.toString()
+                                    )
+                                    database.child(FORUMS_TABLE).child(request.id).child("chatMessages").child(key).setValue(message)
+
+                                    edtMessage.setText("")
+                                }
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                            }
+                        })
+
+                }
             }
         }
     }
@@ -122,7 +150,7 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
 
     private fun loadNewChats() {
         database.child(FORUMS_TABLE).child(request.id!!).child("chatMessages")
-            .addValueEventListener(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     mBinding.forumItemTxtCommentsCount.text = snapshot.childrenCount.toString()
                 }
@@ -132,20 +160,20 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
 
             })
         database.child(FORUMS_TABLE).child(request.id).child("chatMessages")
-            .addChildEventListener(object : ChildEventListener{
+            .addChildEventListener(object : ChildEventListener {
                 override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                     val message = snapshot.getValue<ChatMessage>()
                     if (message != null) {
-                        message.type = if(message.userId == myUser.id) OUT_CHAT else IN_CHAT
-                        message.userNameDesc = if(message.userId == request.userId) "(صاحب الطلب)" else ""
-                        if(messages.size > 0){
-                            if(messages[messages.lastIndex].userId == message.userId){
+                        message.type = if (message.userId == mSharedPref.getString(USER_ID)) OUT_CHAT else IN_CHAT
+                        message.userNameDesc = if (message.userId == request.userId) "(صاحب الطلب)" else ""
+                        if (messages.size > 0) {
+                            if (messages[messages.lastIndex].userId == message.userId) {
                                 message.isContinue = true
                             }
                         }
                         mAdapter.add(message)
                         messages.add(message)
-                        mBinding.forumChatRvMessages.scrollToPosition(mAdapter.count-1)
+                        mBinding.forumChatRvMessages.scrollToPosition(mAdapter.count - 1)
                     }
                 }
 
@@ -167,12 +195,18 @@ class ForumChatFragment(private val request: ForumRequest) : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.chat_menu, menu)
+        menu.findItem(R.id.chatMenu_deleteChat).isVisible = mSharedPref.getString(USER_ID) == request.userId
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.chatMenu_deleteChat -> {
-                Log.d(_tag, "onOptionsItemSelected: Delete")
+                mDialog.showConfirmCancelMessage("حذف الطلب", "هل انت متأكد من حذف الطلب؟"){
+                    database.child(FORUMS_TABLE).child(request.id!!).removeValue { error, ref ->
+                        mDialog.dismiss()
+                        parentFragmentManager.popBackStack()
+                    }
+                }
                 true
             }
             android.R.id.home -> {

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingVertical="6dp"
     android:paddingHorizontal="12dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:paddingBottom="2dp"
+    tools:background="#C8E6C9">
 
     <io.getstream.avatarview.AvatarView
         android:id="@+id/chatItem_avatarView"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginTop="16dp"
         app:avatarViewBorderColor="@color/md_theme_light_primary"
         app:avatarViewBorderWidth="0dp"
         app:avatarViewInitials="TB"
@@ -46,8 +48,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:background="@drawable/chat_in_bg"
-        android:layout_marginTop="8dp"
         android:paddingEnd="8dp"
         app:layout_constraintStart_toStartOf="@+id/chatItem_avatarView"
         app:layout_constraintTop_toBottomOf="@+id/chatItem_avatarView">

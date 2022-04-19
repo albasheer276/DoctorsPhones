@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -70,6 +73,20 @@ class ForumDoctorFragment : Fragment() {
         }
 
         override fun onMoreClick() {}
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // handle the back pressed action, to close the app, and do not open the splash screen again
+        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (MainFragment.isDrawerOpen()) {
+                    MainFragment.closeDrawer()
+                    return
+                }
+                findNavController().popBackStack()
+            }
+        })
     }
 
     override fun onCreateView(

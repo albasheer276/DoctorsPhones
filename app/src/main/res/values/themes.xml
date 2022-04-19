@@ -3,12 +3,16 @@
     <style name="Theme.DoctorsPhones" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <!-- Defining that new color in ColorPrimaryDark -->
+        <item name="colorPrimaryDark">@color/md_theme_light_secondary</item>
 
         <item name="colorSecondary">@color/md_theme_light_secondary</item>
         <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
 
         <item name="fontFamily">@font/cairo_font</item>
         <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="AppTitle">
@@ -121,6 +125,25 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="H1">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="H2">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DrawerLink">
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/md_theme_light_error</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="CardH2">
         <item name="android:gravity">right</item>
         <item name="android:textColor">@color/md_theme_light_onPrimaryContainer</item>
@@ -228,7 +251,7 @@
     </style>
 
     <!-- TOOLBAR THEME -->
-    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <!-- Color of the title text in the Toolbar -->
         <item name="android:textColorPrimary">@color/md_theme_light_onSecondary</item>
     </style>

@@ -86,4 +86,7 @@ dependencies {
 
     // time ago
     implementation 'com.github.marlonlom:timeago:4.0.3'
+
+    // check internet connection
+    implementation 'com.github.raheemadamboev:check-internet-android:1.0.1'
 }
