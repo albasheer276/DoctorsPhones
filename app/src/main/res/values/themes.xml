@@ -33,6 +33,20 @@
         <item name="android:textColorHint">@color/hintColor</item>
         <item name="android:textAlignment">textStart</item>
     </style>
+
+    <style name="ProfileInput" parent="android:Widget.EditText">
+        <item name="android:textColor">@color/md_theme_light_primary</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:background">@drawable/rounded_profile_input_bg</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColorHint">@color/hintColor</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
     <style name="ChatInput" parent="android:Widget.EditText">
         <item name="android:textColor">@color/md_theme_light_primary</item>
         <item name="android:paddingTop">12dp</item>
@@ -135,6 +149,11 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FooterText">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/md_theme_light_onSecondary</item>
     </style>
 
     <style name="DrawerLink">
@@ -276,4 +295,18 @@
         <item name="itemActiveIndicatorStyle">@color/transparent</item>
         <item name="itemRippleColor">@color/md_theme_light_secondaryContainer</item>
     </style>
+
+    <style name="circleImageView">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="roundedImageView">
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="cuttedImageView">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
 </resources>

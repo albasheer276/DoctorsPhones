@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_secondary"
+    tools:context=".ui.ProfileFragment">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/md_theme_light_inverseOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="?attr/colorSecondary"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/personal_account"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TitleText" />
+
+    <io.getstream.avatarview.AvatarView
+        android:id="@+id/profile_avatarView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:avatarViewBorderColor="@color/md_theme_light_secondary"
+        app:avatarViewBorderWidth="0dp"
+        app:avatarViewInitials="TB"
+        app:avatarViewInitialsBackgroundColor="@color/md_theme_light_secondary"
+        app:avatarViewInitialsTextColor="@color/md_theme_light_onSecondary"
+        app:avatarViewInitialsTextSize="36sp"
+        app:avatarViewShape="circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_toolbar" />
+
+    <TextView
+        android:id="@+id/profile_lblEditImage"
+        style="@style/CardSecondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="@string/edit_image"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_avatarView"
+        app:layout_constraintEnd_toStartOf="@+id/profile_avatarView"
+        app:layout_constraintTop_toTopOf="@+id/profile_avatarView" />
+
+    <LinearLayout
+        android:id="@+id/profile_layoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_avatarView">
+
+        <EditText
+            android:id="@+id/profile_edtName"
+            style="@style/ProfileInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/name"
+            android:autofillHints="name"
+            android:inputType="textPersonName|textCapWords"
+            tools:ignore="LabelFor"
+            tools:text="بشير قيس" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/form_label"
+            android:gravity="center"
+            android:text="@string/name"
+            android:textColor="@color/md_theme_light_onSecondary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_layoutPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layoutName">
+
+        <EditText
+            android:id="@+id/profile_edtPhone"
+            style="@style/ProfileInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autofillHints="name"
+            android:hint="@string/_07xx_xxx"
+            android:inputType="phone"
+            tools:ignore="LabelFor"
+            tools:text="0783 130 3433" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/form_label"
+            android:gravity="center"
+            android:text="@string/phone"
+            android:textColor="@color/md_theme_light_onSecondary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/profile_txtPhone"
+        style="@style/FormAlertLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/profile_layoutPhone"
+        app:layout_constraintStart_toStartOf="@+id/profile_layoutPhone"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layoutPhone"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/profile_layoutUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_txtPhone">
+
+        <EditText
+            android:id="@+id/profile_edtUser"
+            style="@style/ProfileInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autofillHints="name"
+            android:hint="@string/username"
+            android:inputType="textPersonName|text"
+            tools:ignore="LabelFor"
+            tools:text="basheer_ob" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/form_label"
+            android:gravity="center"
+            android:text="@string/username"
+            android:textColor="@color/md_theme_light_onSecondary"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_layoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layoutUser">
+
+        <EditText
+            android:id="@+id/profile_edtPassword"
+            style="@style/ProfileInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:autofillHints="name"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            tools:ignore="LabelFor"
+            tools:text="basheer_ob" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/form_label"
+            android:gravity="center"
+            android:text="@string/password"
+            android:textColor="@color/md_theme_light_onSecondary"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/profile_txtPassword"
+        style="@style/FormAlertLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/profile_layoutPassword"
+        app:layout_constraintStart_toStartOf="@+id/profile_layoutPassword"
+        app:layout_constraintTop_toBottomOf="@+id/profile_layoutPassword"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/profile_btnSave"
+        style="@style/PrimaryButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/save_changes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_txtPassword" />
+</androidx.constraintlayout.widget.ConstraintLayout>

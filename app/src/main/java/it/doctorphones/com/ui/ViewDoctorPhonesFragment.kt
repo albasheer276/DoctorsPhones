@@ -34,7 +34,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ViewDoctorPhonesFragment : Fragment() {
 
-    private val _tag = "ViewDoctorPhonesFragmen_DP"
     private lateinit var mBinding: FragmentViewDoctorPhonesBinding
 
     @Inject
@@ -75,7 +74,6 @@ class ViewDoctorPhonesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val spinnerBinding = mBinding.viewDoctorPhonesSpinnerLayout
         spinnerBinding.spinnerProvinces.setOnClickListener {
             SearchableSpinnerUtil.setupSearchableSpinner(

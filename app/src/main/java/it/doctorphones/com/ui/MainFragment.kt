@@ -140,6 +140,23 @@ class MainFragment : Fragment() {
                     .replace(R.id.mainFragmentContainer, AboutUsFragment())
                     .addToBackStack(null)
                     .commit()
+                closeDrawer()
+            }
+
+            drawerContactUs.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainFragmentContainer, ContactUsFragment())
+                    .addToBackStack(null)
+                    .commit()
+                closeDrawer()
+            }
+
+            drawerPersonalAccount.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainFragmentContainer, ProfileFragment())
+                    .addToBackStack(null)
+                    .commit()
+                closeDrawer()
             }
         }
     }

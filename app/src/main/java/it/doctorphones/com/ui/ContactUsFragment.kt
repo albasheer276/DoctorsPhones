@@ -1,24 +1,24 @@
 package it.doctorphones.com.ui
 
 import android.os.Bundle
-import android.view.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import it.doctorphones.com.R
-import it.doctorphones.com.databinding.FragmentAboutUsBinding
-import it.doctorphones.com.utils.FORUMS_TABLE
-import it.doctorphones.com.utils.USER_ID
+import it.doctorphones.com.databinding.FragmentContactUsBinding
 
+class ContactUsFragment : Fragment() {
 
-class AboutUsFragment : Fragment() {
-
-    private lateinit var mBinding: FragmentAboutUsBinding
+    private lateinit var mBinding: FragmentContactUsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = FragmentAboutUsBinding.inflate(inflater)
+        mBinding = FragmentContactUsBinding.inflate(inflater)
         setHasOptionsMenu(true)
         return mBinding.root
     }
@@ -27,9 +27,8 @@ class AboutUsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         // set a custom toolbar
         val activity = (activity as AppCompatActivity)
-        activity.setSupportActionBar(mBinding.aboutUsToolbar)
+        activity.setSupportActionBar(mBinding.contactUsToolbar)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

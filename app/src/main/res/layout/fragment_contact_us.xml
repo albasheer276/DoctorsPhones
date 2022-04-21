@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_light_secondary"
+    tools:context=".ui.ContactUsFragment">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/md_theme_light_inverseOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/contactUs_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="?attr/colorSecondary"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="@string/contact_us"
+        app:titleCentered="true"
+        app:titleTextAppearance="@style/TitleText" />
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/contactUs_rvMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/contactUs_chatLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactUs_toolbar"
+        app:layout_empty="@layout/empty_chat_layout"
+        app:scrollbars="none" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contactUs_chatLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_input_bordered_bg"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/contactUs_edtMessage"
+            style="@style/ChatInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:autofillHints="name"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:hint="@string/write_here"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:maxLines="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contactUs_btnSend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/contactUs_btnSend"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:contentDescription="@string/send"
+            android:focusable="true"
+            android:foreground="?selectableItemBackground"
+            android:paddingHorizontal="12dp"
+            android:src="@drawable/ic_send_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
