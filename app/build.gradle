@@ -89,4 +89,7 @@ dependencies {
 
     // check internet connection
     implementation 'com.github.raheemadamboev:check-internet-android:1.0.1'
+
+    // image picker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 }

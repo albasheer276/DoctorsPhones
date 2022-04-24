@@ -1,17 +1,23 @@
 package it.doctorphones.com.ui
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.EmailAuthProvider
+import androidx.fragment.app.Fragment
+import coil.transform.CircleCropTransformation
+import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -19,14 +25,18 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avatarview.coil.loadImage
 import it.doctorphones.com.R
 import it.doctorphones.com.databinding.FragmentProfileBinding
 import it.doctorphones.com.models.User
-import it.doctorphones.com.utils.*
+import it.doctorphones.com.utils.PASSWORD
+import it.doctorphones.com.utils.USERS_TABLE
+import it.doctorphones.com.utils.Utils
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
+    private val _tag = "ProfileFragment_DP"
 
     private lateinit var mBinding: FragmentProfileBinding
 
@@ -74,12 +84,17 @@ class ProfileFragment : Fragment() {
         mBinding.profileBtnSave.setOnClickListener {
             mIsFormEmpty = false
             val edtName = mBinding.profileEdtName
+            val txtName = mBinding.profileTxtName
             val edtPhone = mBinding.profileEdtPhone
             val txtPhone = mBinding.profileTxtPhone
+            val edtUser = mBinding.profileEdtUser
+            val txtUser = mBinding.profileTxtUser
             val edtPassword = mBinding.profileEdtPassword
             val txtPassword = mBinding.profileTxtPassword
 
+            checkEditTextEmpty(edtName, txtName, R.string.required_field)
             checkEditTextEmpty(edtPhone, txtPhone, R.string.required_field)
+            //checkEditTextEmpty(edtUser, txtUser, R.string.required_field)
             checkEditTextEmpty(edtPassword, txtPassword, R.string.required_field)
             if (mIsFormEmpty) {
                 return@setOnClickListener
@@ -119,6 +134,45 @@ class ProfileFragment : Fragment() {
                         }
                     }
                 }
+            }
+        }
+
+        mBinding.profileLblEditImage.setOnClickListener {
+            ImagePicker.with(this)
+                .crop()                    //Crop image(Optional), Check Customization for more option
+                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (resultCode) {
+            Activity.RESULT_OK -> {
+                //Image Uri will not be null for RESULT_OK
+                val uri: Uri = data?.data!!
+                try {
+                    // Use Uri object instead of File to avoid storage permissions
+                    mBinding.profileAvatarView.avatarInitials = null
+                    mBinding.profileAvatarView.loadImage(
+                        data = uri
+                    ) {
+                        crossfade(true)
+                        crossfade(300)
+                        transformations(CircleCropTransformation())
+                        lifecycle(viewLifecycleOwner)
+                    }
+                } catch (e: Exception) {
+                    Log.d(_tag, "onActivityResult: $e")
+                }
+
+            }
+            ImagePicker.RESULT_ERROR -> {
+                Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
             }
         }
     }

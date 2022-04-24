@@ -49,7 +49,7 @@
         android:elevation="10dp"
         app:avatarViewBorderColor="@color/md_theme_dark_inverseOnSurface"
         app:avatarViewBorderWidth="0dp"
-        app:avatarViewInitials="TB"
+        tools:avatarViewInitials="TB"
         app:avatarViewInitialsBackgroundColor="@color/md_theme_light_secondary"
         app:avatarViewInitialsTextColor="@color/md_theme_light_onSecondary"
         app:avatarViewInitialsTextSize="24sp"
