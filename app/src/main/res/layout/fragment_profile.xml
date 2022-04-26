@@ -124,6 +124,7 @@
             android:autofillHints="name"
             android:hint="@string/_07xx_xxx"
             android:inputType="phone"
+            android:maxLength="11"
             tools:ignore="LabelFor"
             tools:text="0783 130 3433" />
 

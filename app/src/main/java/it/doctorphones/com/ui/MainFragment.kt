@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import coil.transform.CircleCropTransformation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import dagger.hilt.android.AndroidEntryPoint
+import io.getstream.avatarview.coil.loadImage
 import it.doctorphones.com.R
 import it.doctorphones.com.databinding.FragmentMainBinding
 import it.doctorphones.com.dialogs.AppAlertDialog
@@ -113,12 +115,35 @@ class MainFragment : Fragment() {
                 val user = snapshot.getValue<User>()
                 if (user != null) {
 
+                    mBinding.drawerTopLayout.drawerTxtUserName.text = user.name
+                    mBinding.drawerTopLayout.drawerAvatarView.avatarInitials = user.name
+                    // Use Uri object instead of File to avoid storage permissions
+                    if (user.profile != null) {
+                        mBinding.drawerTopLayout.drawerAvatarView.avatarInitials = null
+                        mBinding.drawerTopLayout.drawerAvatarView.loadImage(
+                            data = user.profile
+                        ) {
+                            crossfade(true)
+                            crossfade(300)
+                            transformations(CircleCropTransformation())
+                            lifecycle(viewLifecycleOwner)
+                        }
+                    }
+                    // Use Uri object instead of File to avoid storage permissions
+                    mBinding.drawerTopLayout.drawerAvatarView.avatarInitials = null
+                    mBinding.drawerTopLayout.drawerAvatarView.loadImage(
+                        data = user.profile
+                    ) {
+                        crossfade(true)
+                        crossfade(300)
+                        transformations(CircleCropTransformation())
+                        lifecycle(viewLifecycleOwner)
+                    }
                     mSharedPref.saveData(USER_ID, user.id!!)
                     mSharedPref.saveData(USER_NAME, user.name!!)
                     mSharedPref.saveData(USER_PROFILE, user.profile!!)
 
-                    mBinding.drawerTopLayout.drawerTxtUserName.text = user.name
-                    mBinding.drawerTopLayout.drawerAvatarView.avatarInitials = user.name
+
                 }
             }
 

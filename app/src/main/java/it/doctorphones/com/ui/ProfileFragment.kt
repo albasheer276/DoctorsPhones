@@ -24,14 +24,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.i18n.phonenumbers.PhoneNumberUtil
 import dagger.hilt.android.AndroidEntryPoint
 import io.getstream.avatarview.coil.loadImage
 import it.doctorphones.com.R
 import it.doctorphones.com.databinding.FragmentProfileBinding
 import it.doctorphones.com.models.User
-import it.doctorphones.com.utils.PASSWORD
-import it.doctorphones.com.utils.USERS_TABLE
-import it.doctorphones.com.utils.Utils
+import it.doctorphones.com.utils.*
+import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,7 +48,12 @@ class ProfileFragment : Fragment() {
     @Inject
     lateinit var database: DatabaseReference
 
+    @Inject
+    lateinit var storage: StorageReference
+
     private var mIsFormEmpty = false
+    private val mSharedPref by lazy { AppSharedPref(requireContext(), LOGIN_SHARED_DATA) }
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,10 +77,24 @@ class ProfileFragment : Fragment() {
                 if (user != null) {
                     with(mBinding) {
                         profileEdtName.setText(user.name)
-                        profileEdtPhone.setText(user.phone)
+                        profileEdtPhone.setText(Utils.formatNumber(user.phone, PhoneNumberUtil.PhoneNumberFormat.NATIONAL))
                         profileEdtPassword.setText(if ((user.password) == PASSWORD) "" else user.password)
                         profileEdtUser.setText(user.email?.split("@")?.get(0) ?: "")
                         profileAvatarView.avatarInitials = user.name
+
+                        // Use Uri object instead of File to avoid storage permissions
+                        if(user.profile != null){
+                            profileAvatarView.avatarInitials = null
+                            profileAvatarView.loadImage(
+                                data = user.profile
+                            ) {
+                                crossfade(true)
+                                crossfade(300)
+                                transformations(CircleCropTransformation())
+                                lifecycle(requireActivity())
+                            }
+                        }
+
                     }
                 }
             }
@@ -96,6 +117,7 @@ class ProfileFragment : Fragment() {
             checkEditTextEmpty(edtPhone, txtPhone, R.string.required_field)
             //checkEditTextEmpty(edtUser, txtUser, R.string.required_field)
             checkEditTextEmpty(edtPassword, txtPassword, R.string.required_field)
+            Log.d(_tag, "onViewCreated: step 0")
             if (mIsFormEmpty) {
                 return@setOnClickListener
             }
@@ -117,22 +139,54 @@ class ProfileFragment : Fragment() {
                 txtPassword.visibility = View.GONE
             }
 
-            val phone = "user_${edtPhone.text}@docphones.com"
+            val phone = "user_${Utils.formatNumber(edtPhone.text.toString(), PhoneNumberUtil.PhoneNumberFormat.NATIONAL)}@docphones.com"
             val password = edtPassword.text.toString()
+
+            if (imageUri != null) {
+                Log.d(_tag, "onViewCreated: $imageUri")
+                val ref: StorageReference = storage.child("users/" + UUID.randomUUID().toString())
+                ref.putFile(imageUri!!).continueWithTask { task ->
+                    if (!task.isSuccessful) {
+                        task.exception?.let {
+                            throw it
+                        }
+                    }
+                    ref.downloadUrl
+                }.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val profile = task.result.toString()
+                        database.child(USERS_TABLE).child(auth.currentUser!!.uid).child("profile").setValue(profile)
+                    } else {
+                        // Handle failures
+                        // ...
+                    }
+                }
+            }
 
             auth.currentUser!!.updateEmail(phone).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+                    Log.d(_tag, "onViewCreated: step 1")
                     auth.currentUser!!.updatePassword(password).addOnCompleteListener { passwordTask ->
                         if (passwordTask.isSuccessful) {
+                            Log.d(_tag, "onViewCreated: step 2")
                             val user = User(
                                 id = auth.currentUser!!.uid,
                                 name = edtName.text.toString(),
                                 email = auth.currentUser!!.email,
+                                phone = Utils.formatNumber(edtPhone.text.toString(), PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL),
                                 password = password
                             )
                             database.child(USERS_TABLE).child(auth.currentUser!!.uid).setValue(user)
+
+                            // update shared preference
+                            mSharedPref.saveData(USER_NAME, user.name.toString())
+                            mSharedPref.saveData(USER_PROFILE, user.profile.toString())
+                        } else {
+                            Log.d(_tag, "onViewCreated: fail 2")
                         }
                     }
+                } else {
+                    Log.d(_tag, "onViewCreated: ${task.result}")
                 }
             }
         }
@@ -151,12 +205,12 @@ class ProfileFragment : Fragment() {
         when (resultCode) {
             Activity.RESULT_OK -> {
                 //Image Uri will not be null for RESULT_OK
-                val uri: Uri = data?.data!!
+                imageUri = data?.data!!
                 try {
                     // Use Uri object instead of File to avoid storage permissions
                     mBinding.profileAvatarView.avatarInitials = null
                     mBinding.profileAvatarView.loadImage(
-                        data = uri
+                        data = imageUri
                     ) {
                         crossfade(true)
                         crossfade(300)

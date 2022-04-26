@@ -6,6 +6,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,4 +33,8 @@ object DataModule {
         Firebase.database.reference.keepSynced(true)
         return Firebase.database.reference
     }
+
+    @Provides
+    @Singleton
+    fun provideStorageReference(): StorageReference = Firebase.storage.reference
 }

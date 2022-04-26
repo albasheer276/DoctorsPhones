@@ -74,6 +74,9 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    // firebase storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
     // permissions
     implementation 'com.github.AraujoJordan:ExcuseMe:0.9.5'
 
